@@ -1,10 +1,12 @@
 import Image from 'next/image'
 
+import Navbar from '@/components/navbar/Navbar'
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 const Home = () => {
   return (
     <FrontendLayout>
+      <Navbar />
       <section>
         {/* bg image */}
         <Image
