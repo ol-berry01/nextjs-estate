@@ -1,8 +1,9 @@
+import FrontendLayout from '@/components/layouts/FrontendLayout'
+
 const Home = () => {
   return (
-    <div>
-      <h1>Next Estate Marketplace</h1>
-    </div>
+    <FrontendLayout> 
+    </FrontendLayout>
   )
 }
 
