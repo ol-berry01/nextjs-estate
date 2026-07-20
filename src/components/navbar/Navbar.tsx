@@ -1,4 +1,8 @@
-const Navbar = () => {
+interface NavbarProps {
+  variant: 'transparent' | 'solid'
+}
+
+const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
   return (
     <div>Navbar</div>
   )
