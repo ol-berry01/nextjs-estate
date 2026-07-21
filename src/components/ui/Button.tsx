@@ -13,7 +13,7 @@ const Button = ( {
   variant = 'primary', 
   children, 
   icon, 
-  iconPosition, 
+  iconPosition = 'left', 
   fullWidth = false, 
   loading = false, 
   disabled, 
@@ -49,7 +49,7 @@ const Button = ( {
         { icon && iconPosition === 'left' && (
           <span>{ icon }</span>
         ) }
-        { children}
+        { children }
         { /* icon position right */ }
         { icon && iconPosition === 'right' && (
           <span>{ icon }</span>
