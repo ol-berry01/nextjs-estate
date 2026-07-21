@@ -55,6 +55,16 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             >Add property</Button>
             <Button variant={ 'outline' }>Login</Button>
           </div>
+
+          {/* mobile menu buttons */}
+          <button className={ 
+            `w-11 h-11 rounded-2xl transition flex lg:hidden justify-center items-center 
+            ${ 
+              isTransparent ? 
+              'bg-white/5 text-white border border-white/10' : 
+              'bg-background text-text border border-black/10' 
+            }` }>
+            </button>
         </nav>
       </div>
     </header>
