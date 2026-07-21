@@ -2,6 +2,8 @@ import Link from 'next/link'
 
 import Button from '@/components/ui/Button'
 
+import { FaHome } from 'react-icons/fa'
+
 interface NavbarProps {
   variant?: 'transparent' | 'solid'
 }
@@ -49,7 +51,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
           <div className={ 'hidden lg:flex items-center gap-4' }>
             <Button 
               variant={ 'outline' } 
-              icon={ '' }
+              icon={ <FaHome /> }
             >Add property</Button>
             <Button variant={ 'outline' }>Login</Button>
           </div>
