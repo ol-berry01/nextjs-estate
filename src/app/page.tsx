@@ -7,12 +7,12 @@ const Home = () => {
   return (
     <FrontendLayout>
       <Navbar />
-      <section>
+      <section className={ 'relative' }>
         {/* bg image */}
         <Image
           src={ '/images/hero.jpg' }
           alt={ 'Background hero image' }
-          fill
+          fill={ true }
           className={ 'object-center object-cover absolute inset-0' }
         />
 
