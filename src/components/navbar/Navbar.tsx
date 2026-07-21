@@ -42,6 +42,10 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
               </Link>
             ) )}
           </div>
+
+          {/* desktop buttons */}
+          <div className={ 'hidden lg:flex items-center gap-4' }>
+          </div>
         </nav>
       </div>
     </header>
