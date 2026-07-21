@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import Button from '@/components/ui/Button'
+
 interface NavbarProps {
   variant?: 'transparent' | 'solid'
 }
@@ -45,6 +47,11 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
 
           {/* desktop buttons */}
           <div className={ 'hidden lg:flex items-center gap-4' }>
+            <Button 
+              variant={ 'outline' } 
+              icon={ '' }
+            >Add property</Button>
+            <Button variant={ 'outline' }>Login</Button>
           </div>
         </nav>
       </div>
