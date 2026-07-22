@@ -1,8 +1,13 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
 import Button from '@/components/ui/Button'
 
 import { FaHome } from 'react-icons/fa'
+import { IoClose } from 'react-icons/io5'
+import { HiOutlineMenuAlt3 } from 'react-icons/hi'
 
 interface NavbarProps {
   variant?: 'transparent' | 'solid'
@@ -15,6 +20,7 @@ const navLink = [
 ]
 
 const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
+  const [ isOpen, setIsOpen ] = useState( false )
   const isTransparent = variant === 'transparent'
 
   return (
@@ -57,14 +63,22 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
           </div>
 
           {/* mobile menu buttons */}
-          <button className={ 
-            `w-11 h-11 rounded-2xl transition flex lg:hidden justify-center items-center 
-            ${ 
-              isTransparent ? 
-              'bg-white/5 text-white border border-white/10' : 
-              'bg-background text-text border border-black/10' 
-            }` }>
-            </button>
+          <button 
+            className={ 
+              `w-11 h-11 rounded-2xl transition flex lg:hidden justify-center items-center 
+              ${ 
+                isTransparent ? 
+                'bg-white/5 text-white border border-white/10' : 
+                'bg-background text-text border border-black/10' 
+              }` 
+            }
+            onClick={ () => setIsOpen( ! isOpen ) }
+          >
+              { 
+              isOpen ? 
+              <IoClose size={ 24 } /> : 
+              <HiOutlineMenuAlt3 size={ 24 } /> }
+          </button>
         </nav>
       </div>
     </header>
