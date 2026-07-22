@@ -86,9 +86,9 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
         {/* mobile menu */}
         { isOpen && (
           <div className={ 
-              `mt-4 p-6 border rounded-3xl backdrop-blur-2xl lg:hidden ${ isTransparent ? 
-              'bg-secondary/95 border-white/10' : 
-              'bg-white border-black/5' }` 
+              `mt-4 backdrop-blur-2xl lg:hidden ${ isTransparent ? 
+              'bg-secondary/95 p-6 border rounded-3xl border-white/10' : 
+              'bg-white pb-6' }` 
             }
           >
             <div className={ 'flex flex-col gap-5' }>
