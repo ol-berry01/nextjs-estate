@@ -89,7 +89,17 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
                 'bg-white border-black/5' }` 
               }
             >
-              
+              <div className={ 'flex flex-col gap-5' }>
+                { navLink.map( ( item ) => (
+                  <Link
+                    href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
+                    className={ `transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
+                    key={ item }
+                  >
+                    { item }
+                  </Link>
+                ) )}
+              </div>
             </div>
           ) }
         </nav>
