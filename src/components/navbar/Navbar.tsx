@@ -102,6 +102,14 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
                 </Link>
               ) )}
             </div>
+
+            <div className={ 'mt-4 flex flex-col gap-3' }>
+              <Button 
+                variant={ 'outline' } 
+                icon={ <FaHome /> }
+              >Add property</Button>
+              <Button variant={ 'outline' }>Login</Button>
+            </div>
           </div>
         ) }
       </div>
