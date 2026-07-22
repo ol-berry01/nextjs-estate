@@ -74,11 +74,24 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             }
             onClick={ () => setIsOpen( ! isOpen ) }
           >
-              { 
+            { 
               isOpen ? 
               <IoClose size={ 24 } /> : 
-              <HiOutlineMenuAlt3 size={ 24 } /> }
+              <HiOutlineMenuAlt3 size={ 24 } /> 
+            }
           </button>
+
+          {/* mobile menu */}
+          { isOpen && (
+            <div className={ 
+                `mt-4 p-6 border rounded-3xl backdrop-blur-2xl lg:hidden ${ isTransparent ? 
+                'bg-secondary/95 border-white/10' : 
+                'bg-white border-black/5' }` 
+              }
+            >
+              
+            </div>
+          ) }
         </nav>
       </div>
     </header>
