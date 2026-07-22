@@ -1,16 +1,18 @@
 import Image from 'next/image'
 
+import Navbar from '@/components/navbar/Navbar'
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 const Home = () => {
   return (
     <FrontendLayout>
-      <section>
+      <Navbar />
+      <section className={ 'relative' }>
         {/* bg image */}
         <Image
           src={ '/images/hero.jpg' }
           alt={ 'Background hero image' }
-          fill
+          fill={ true }
           className={ 'object-center object-cover absolute inset-0' }
         />
 
