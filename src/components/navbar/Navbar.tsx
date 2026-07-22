@@ -81,28 +81,29 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             }
           </button>
 
-          {/* mobile menu */}
-          { isOpen && (
-            <div className={ 
-                `mt-4 p-6 border rounded-3xl backdrop-blur-2xl lg:hidden ${ isTransparent ? 
-                'bg-secondary/95 border-white/10' : 
-                'bg-white border-black/5' }` 
-              }
-            >
-              <div className={ 'flex flex-col gap-5' }>
-                { navLink.map( ( item ) => (
-                  <Link
-                    href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
-                    className={ `transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
-                    key={ item }
-                  >
-                    { item }
-                  </Link>
-                ) )}
-              </div>
-            </div>
-          ) }
         </nav>
+        
+        {/* mobile menu */}
+        { isOpen && (
+          <div className={ 
+              `mt-4 p-6 border rounded-3xl backdrop-blur-2xl lg:hidden ${ isTransparent ? 
+              'bg-secondary/95 border-white/10' : 
+              'bg-white border-black/5' }` 
+            }
+          >
+            <div className={ 'flex flex-col gap-5' }>
+              { navLink.map( ( item ) => (
+                <Link
+                  href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
+                  className={ `transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
+                  key={ item }
+                >
+                  { item }
+                </Link>
+              ) )}
+            </div>
+          </div>
+        ) }
       </div>
     </header>
   )
