@@ -2,6 +2,7 @@ import Image from 'next/image'
 
 import Navbar from '@/components/navbar/Navbar'
 import SearchBox from '@/components/searchbox/SearchBox'
+import RecentProperties from '@/sections/RecentProperties'
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 const Home = () => {
@@ -49,6 +50,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <RecentProperties />
     </FrontendLayout>
   )
 }
