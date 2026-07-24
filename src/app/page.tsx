@@ -34,6 +34,11 @@ const Home = () => {
                   Premium real estate marketplace
                 </span>
               </div>
+              {/* heading */}
+              <h2 className='text-white text-4xl font-bold leading-tight md:text-6xl lg:text-7xl'>
+                Find the perfect place to call home
+              </h2>
+              <p className={ 'text-white max-w-2xl mt-6 text-lg leading-relaxed'}>Discover luxury apartments, modern homes and premium properties in the best locations around the world.</p>
             </div>
           </div>
         </div>
