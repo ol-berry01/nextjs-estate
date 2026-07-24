@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import Navbar from '@/components/navbar/Navbar'
+import SearchBox from '@/components/searchbox/SearchBox'
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 const Home = () => {
@@ -39,7 +40,10 @@ const Home = () => {
                 Find the perfect place to call home
               </h2>
               <p className={ 'text-white max-w-2xl mt-6 text-lg leading-relaxed'}>Discover luxury apartments, modern homes and premium properties in the best locations around the world.</p>
+              
+              <SearchBox />
             </div>
+
           </div>
         </div>
       </section>
