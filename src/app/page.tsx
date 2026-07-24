@@ -41,9 +41,9 @@ const Home = () => {
                   Find the perfect place to call home
                 </h2>
                 <p className={ 'text-white max-w-2xl mt-6 text-lg leading-relaxed'}>Discover luxury apartments, modern homes and premium properties in the best locations around the world.</p>
-              </div>
               
-              <SearchBox />
+                <SearchBox />
+              </div>
             </div>
 
           </div>
