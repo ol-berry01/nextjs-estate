@@ -1,4 +1,8 @@
+'use client'
+
 import Link from 'next/link'
+
+import { navLinks } from '../navbar/Navbar'
 
 const Footer = () => {
   return (
@@ -16,6 +20,19 @@ const Footer = () => {
               Estate
             </span>
           </Link>
+
+          {/* desktop links */}
+          <div className={ 'hidden lg:flex items-cetner gap-8' }>
+            { navLinks.map( ( item ) => (
+              <Link
+                href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
+                className={ 'text-sm hover:text-primary font-medium transition text-text/70' }
+                key={ item }
+              >
+                { item }
+              </Link>
+            ) )}
+          </div>
       </div>
     </footer>
   )
