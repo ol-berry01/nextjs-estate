@@ -1,3 +1,5 @@
+import PropertyCard from '@/components/ui/PropertyCard'
+
 import properties from '@/constants/dummyProperties'
 
 const RecentProperties = () => {
@@ -22,12 +24,10 @@ const RecentProperties = () => {
         {/* properties grid */}
         <div className={ 'my-6 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
           { properties.map( ( property ) => (
-            <p 
-              className={ '' }
+            <PropertyCard 
               key={ property.id }
-            >
-              { property.title }
-            </p>
+              property={ property }
+            />
           ) ) }
         </div>
       </div>
