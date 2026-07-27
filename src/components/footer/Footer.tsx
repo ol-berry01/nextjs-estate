@@ -22,7 +22,7 @@ const Footer = () => {
           </Link>
 
           {/* desktop links */}
-          <div className={ 'hidden lg:flex items-cetner gap-8' }>
+          <div className={ 'flex items-cetner gap-8' }>
             { navLinks.map( ( item ) => (
               <Link
                 href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
@@ -33,6 +33,10 @@ const Footer = () => {
               </Link>
             ) )}
           </div>
+
+          <p className="text-text text-sm">
+            &copy; { new Date().getFullYear() } NextEstates
+          </p>
       </div>
     </footer>
   )
