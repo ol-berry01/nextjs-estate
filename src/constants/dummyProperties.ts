@@ -25,7 +25,7 @@ const properties: Property[] = [
     bathrooms: 3,
     area: 2200,
     featured: true,
-    image: '/iamges/image1.jpg',
+    image: '/images/image1.jpg',
     description: 'A stunning luxury apartment with moder interiors, spacious rooms and homely charm.'
   },
   {
