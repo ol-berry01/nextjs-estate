@@ -1,3 +1,5 @@
+import properties from '@/constants/dummyProperties'
+
 const RecentProperties = () => {
   return (
     <section className={ 'py-24' }>
@@ -19,9 +21,15 @@ const RecentProperties = () => {
 
         {/* properties grid */}
         <div className={ 'my-6 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
-          
+          { properties.map( ( property ) => (
+            <p 
+              className={ '' }
+              key={ property.id }
+            >
+              { property.title }
+            </p>
+          ) ) }
         </div>
-
       </div>
     </section>
   )
