@@ -13,7 +13,7 @@ interface NavbarProps {
   variant?: 'transparent' | 'solid'
 }
 
-const navLink = [
+const navLinks = [
   'Home',
   'Properties',
   'MarketPlace'
@@ -42,7 +42,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
 
           {/* desktop links */}
           <div className={ 'hidden lg:flex items-cetner gap-8' }>
-            { navLink.map( ( item ) => (
+            { navLinks.map( ( item ) => (
               <Link
                 href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
                 className={ `text-sm hover:text-primary font-medium transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
@@ -92,7 +92,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             }
           >
             <div className={ 'flex flex-col gap-5' }>
-              { navLink.map( ( item ) => (
+              { navLinks.map( ( item ) => (
                 <Link
                   href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
                   className={ `transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
@@ -117,4 +117,4 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
   )
 }
 
-export default Navbar
+export { Navbar, navLinks }
