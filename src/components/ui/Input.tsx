@@ -37,7 +37,7 @@ const Input = ( {
 
   return (
     <div className={ 'w-full' }>
-      <div className="relative">
+      <div className={ 'relative' }>
         { as === 'textarea' ? 
         ( 
           <textarea 
@@ -60,7 +60,21 @@ const Input = ( {
             { ...props as InputHTMLAttributes<HTMLInputElement> }
           />
         ) }
+
+        <label 
+          htmlFor={ inputId }
+          className={ clsx( 
+            `text-gray-500 text-sm transition-all duration-200 pointer-events-none origin-left absolute top-4 left-4`,
+            hasValue ? 'text-gray-700 scale-75 -translate-y-3' : 'peer-focus:text-gray-700 peer-focus:scale-75 peer-focus:-translate-y-3' 
+          ) }
+        >
+          { label }
+        </label>
       </div>
+
+      { error && <p className={ 'text-red-500 mt-1 text-xs' }>
+        { error }
+      </p> }
     </div>
   )
 }
