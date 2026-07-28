@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Image from 'next/image'
 
+import Input from './Input'
+
 interface InputValues {
   email: string,
   name: string,
@@ -47,6 +49,10 @@ const EmailForm = () => {
             <p className={ 'text-text/60' }>
               Property agent
             </p>
+          </div>
+
+          <div className="mt-8 space-y-4">
+            <Input />
           </div>
         </div>
       </div>
