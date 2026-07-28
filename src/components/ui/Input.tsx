@@ -30,7 +30,9 @@ const Input = ( {
   const inputId = id ?? name
   const sharedClasses = clsx(
     `bg-white text-gray-600 w-full px-4 border outline-none transition text-sm peer focus:border-2 disabled:opacity-70`,
-    error ? 'border-red-500 focus:border-red-500' : 'border-gray-400 focus:border-black'
+    error ? 'border-red-500 focus:border-red-500' : 'border-gray-400 focus:border-black',
+    as === 'textarea' ? 'min-h-[120px] pt-6 pb-3 rounded-xl resize-none' : 'h-14 pt-6 rounded-xl',
+    className
   )
 
   return (
