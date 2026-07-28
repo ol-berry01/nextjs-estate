@@ -32,7 +32,7 @@ const EmailForm = () => {
   return (
     <div>
       <div className={ 'bg-card p-8 border border-black/5 rounded-4xl shadow-sm sticky top-28' }>
-        <div className={ 'flex items-center gap-4' }>
+        <div className={ 'flex flex-col gap-4' }>
           <Image 
             src={ '/images/avatar.png' }
             alt={ 'User' }
@@ -51,8 +51,36 @@ const EmailForm = () => {
             </p>
           </div>
 
-          <div className="mt-8 space-y-4">
-            <Input />
+          <div className="mt-2 space-y-4">
+            <Input
+              onChange={ handleChange }
+              id={ 'contact-name' }
+              label={ 'Your name' }
+              name={ 'name' }
+              value={ values.name }
+             />
+            <Input
+              onChange={ handleChange }
+              id={ 'contact-email' }
+              label={ 'Your email' }
+              name={ 'email' }
+              value={ values.email }
+             />
+            <Input
+              onChange={ handleChange }
+              id={ 'contact-phone' }
+              label={ 'Your phone' }
+              name={ 'phone' }
+              value={ values.phone }
+             />
+            <Input
+              onChange={ handleChange }
+              id={ 'contact-message' }
+              label={ 'Your message' }
+              name={ 'message' }
+              value={ values.message }
+              as={ 'textarea' }
+             />
           </div>
         </div>
       </div>
