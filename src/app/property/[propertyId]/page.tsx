@@ -1,6 +1,7 @@
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 import { Navbar } from '@/components/navbar/Navbar'
+import EmailForm from '@/components/ui/EmailForm'
 
 import Image from 'next/image'
 
@@ -110,6 +111,7 @@ const SingleProperty = () => {
             </div>
 
             {/* contact */}
+            <EmailForm />
           </div>
         </div>
       </section>
