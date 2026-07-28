@@ -94,6 +94,23 @@ const SingleProperty = () => {
               className={ 'w-full object-cover rounded-2xl shadow-sm' }
             />
           </div>
+
+          <div className={ 'mt-16 grid gap-10 lg:grid-cols-3' }>
+            {/* description */}
+            <div className={ 'lg:col-span-2' }>
+              <div className={ 'bg-card p-8 border border-black/5 rounded-4xl shadow-sm' }>
+                <h2 className={ 'text-text text-3xl font-bold' }>
+                  About this property
+                </h2>
+
+                <p className={ 'text-text/70 mt-6 leading-relaxed' }>
+                  Experience luxury living in this modern apartment located in one of the most desirable neighbourhoods in the city. Feating spacious interiors, premium finishes, floor-to-ceiling windows and world class amenities.
+                </p>
+              </div>
+            </div>
+
+            {/* contact */}
+          </div>
         </div>
       </section>
     </FrontendLayout>
