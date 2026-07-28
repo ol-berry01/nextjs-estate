@@ -16,6 +16,8 @@ const SingleProperty = () => {
       <section className={ 'py-15' }>
         <div className={ 'max-w-7xl mx-auto px-6 lg:px-12' }>
           <div className={ 'flex flex-col gap-8 lg:flex-row lg:justify-between lg:items-start' }>
+
+            {/* property overview */}
             <div>
               <p className={ 'text-primary text-sm font-semibold uppercase tracking-[0.25em]' }>
                 For sale
@@ -25,6 +27,7 @@ const SingleProperty = () => {
                 Modern luxury apartment
               </h2>
 
+              {/* features */}
               <div className="text-neutral-600 my-6 text-sm flex flex-wrap items-center gap-3">
                 <div className="px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2">
                   <FaMapMarkerAlt
@@ -66,6 +69,18 @@ const SingleProperty = () => {
                   </span>
                 </div>
               </div>
+
+            </div>
+
+            {/* property price */}
+            <div className="bg-card border p-6 border-black/5 rounded-[28px] shadow-sm">
+              <p className="text-text text-sm">
+                Guide price
+              </p>
+
+              <h2 className="text-primary mt-2 text-4xl font-bold">
+                &pound;2,500,000
+              </h2>
             </div>
           </div>
         </div>
