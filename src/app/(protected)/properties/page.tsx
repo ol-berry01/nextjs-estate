@@ -18,7 +18,7 @@ const PropertiesPage = () => {
       <div className="w-full max-w-7xl mx-auto p-6 lg:px-12">
         <div className="flex justify-between">
           <h2 className="text-text text-2xl font-bold md:text-3xl">
-            Explore
+            Properties
           </h2>
         </div>
 
