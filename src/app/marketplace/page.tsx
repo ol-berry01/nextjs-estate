@@ -3,6 +3,8 @@ import { Navbar } from '@/components/navbar/Navbar'
 
 import Button from '@/components/ui/Button'
 
+import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+
 const MarketPlace = () => {
   return (
     <FrontendLayout>
@@ -16,7 +18,12 @@ const MarketPlace = () => {
             Explore
           </h2>
 
-          <Button>Filter</Button>
+          <Button
+            variant={ 'outline' }
+            icon={ <HiOutlineAdjustmentsHorizontal size={ 20 } /> }
+          >
+            Filter
+          </Button>
         </div>
       </div>
     </FrontendLayout>
