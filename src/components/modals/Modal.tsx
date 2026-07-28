@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import { LuX } from 'react-icons/lu'
+
 interface ModalProps {
   isOpen: boolean,
   onClose: () => void,
@@ -34,7 +36,34 @@ const Modal = ( { isOpen, onClose, title, children } : ModalProps ) => {
           ` 
         } 
         onClick={ onClose }
-      />
+        />
+      
+      {/* modal body */}
+      <div 
+        className={
+          `
+            bg-white w-full max-w-lg rounded-2xl shadow-2xl transition-all duration-500 relative z-10
+            ${ isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-full' }
+          `
+        }
+      >
+
+        {/* modal header */}
+        <div className={ 'px-6 py-4 border-b border-gray-300 flex justify-between items-center' }>
+          <h2 className={ 'text-gray-900 text-lg font-semibold' }>
+            { title }
+          </h2>
+          <button
+            aria-label={ 'Close modal' }
+            onClick={ onClose }
+            className={ 'p-2 rounded-full transition cursor-pointer hover:bg-gray-100' }
+          >
+            <LuX
+              size={ 18 }
+            />
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
