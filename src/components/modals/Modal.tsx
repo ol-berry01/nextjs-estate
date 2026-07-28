@@ -63,6 +63,11 @@ const Modal = ( { isOpen, onClose, title, children } : ModalProps ) => {
             />
           </button>
         </div>
+
+        {/* modal content */}
+        <div className={ 'px-6 py-5' }>
+          { children }
+        </div>
       </div>
     </div>
   )
