@@ -15,6 +15,15 @@ const EmailForm = () => {
     message: ''
   } )
 
+  const handleChange = ( e:React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target
+
+    setValues( ( prev ) => ( {
+      ...prev,
+      [ name ]:value
+    }) )
+  }
+
   return (
     <div>EmailForm</div>
   )
