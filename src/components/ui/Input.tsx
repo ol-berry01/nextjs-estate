@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, TextareaHTMLAttributes } from 'react'
 
 import clsx from 'clsx'
 
@@ -8,12 +8,12 @@ interface BaseProps {
   error?: string,
   as?: 'input' | 'textarea',
   value: string,
-  onchange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  onChange?: React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
 }
 
 type InputProps = BaseProps & InputHTMLAttributes<HTMLInputElement>
 
-type TextareaProps = BaseProps & InputHTMLAttributes<HTMLTextAreaElement>
+type TextareaProps = BaseProps & TextareaHTMLAttributes<HTMLTextAreaElement>
 
 const Input = ( {
   label,
@@ -23,7 +23,7 @@ const Input = ( {
   value,
   as = 'input',
   className,
-  onchange,
+  onChange,
   ...props
 }:InputProps | TextareaProps ) => {
   const hasValue = value !== ''
@@ -36,7 +36,32 @@ const Input = ( {
   )
 
   return (
-    <div>Input</div>
+    <div className={ 'w-full' }>
+      <div className="relative">
+        { as === 'textarea' ? 
+        ( 
+          <textarea 
+            name={ name }
+            id={ inputId }
+            value={ value }
+            placeholder={ ' ' }
+            className={ sharedClasses }
+            onChange={ onChange }
+            { ...props as TextareaHTMLAttributes<HTMLTextAreaElement> }
+          /> 
+        ) : (
+          <input 
+            name={ name }
+            id={ inputId }
+            value={ value }
+            placeholder={ ' ' }
+            className={ sharedClasses }
+            onChange={ onChange }
+            { ...props as InputHTMLAttributes<HTMLInputElement> }
+          />
+        ) }
+      </div>
+    </div>
   )
 }
 
