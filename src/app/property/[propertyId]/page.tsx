@@ -2,6 +2,8 @@ import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 import { Navbar } from '@/components/navbar/Navbar'
 
+import Image from 'next/image'
+
 import { FaMapMarkerAlt, FaRulerCombined } from 'react-icons/fa'
 import { LuBedDouble, LuBath } from 'react-icons/lu'
 
@@ -23,48 +25,48 @@ const SingleProperty = () => {
                 For sale
               </p>
 
-              <h2 className="text-text mt-3 text-4xl font-bold md:text-5xl">
+              <h2 className={ 'text-text mt-3 text-4xl font-bold md:text-5xl' }>
                 Modern luxury apartment
               </h2>
 
               {/* features */}
-              <div className="text-neutral-600 my-6 text-sm flex flex-wrap items-center gap-3">
-                <div className="px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2">
+              <div className={ 'text-neutral-600 my-6 text-sm flex flex-wrap items-center gap-3' }>
+                <div className={ 'px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2' }>
                   <FaMapMarkerAlt
                     size={ 16 }
                     className={ 'text-neutral-400' }
                   />
-                  <span className="text-neutral-800 font-medium">
+                  <span className={ 'text-neutral-800 font-medium' }>
                     Manhattan, New York
                   </span>
                 </div>
                 
-                <div className="px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2">
+                <div className={ 'px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2' }>
                   <FaRulerCombined
                     size={ 16 }
                     className={ 'text-neutral-400' }
                   />
-                  <span className="text-neutral-800 font-medium">
+                  <span className={ 'text-neutral-800 font-medium' }>
                     2200m<sup>3</sup>
                   </span>
                 </div>
                 
-                <div className="px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2">
+                <div className={ 'px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2' }>
                   <LuBedDouble
                     size={ 16 }
                     className={ 'text-neutral-400' }
                   />
-                  <span className="text-neutral-800 font-medium">
+                  <span className={ 'text-neutral-800 font-medium' }>
                     7 rooms
                   </span>
                 </div>
                 
-                <div className="px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2">
+                <div className={ 'px-3 py-1 border border-neutral-200 rounded-full flex items-center gap-2' }>
                   <LuBath
                     size={ 16 }
                     className={ 'text-neutral-400' }
                   />
-                  <span className="text-neutral-800 font-medium">
+                  <span className={ 'text-neutral-800 font-medium' }>
                     2 baths
                   </span>
                 </div>
@@ -73,15 +75,24 @@ const SingleProperty = () => {
             </div>
 
             {/* property price */}
-            <div className="bg-card border p-6 border-black/5 rounded-[28px] shadow-sm">
-              <p className="text-text text-sm">
+            <div className={ 'bg-card border p-6 border-black/5 rounded-[28px] shadow-sm' }>
+              <p className={ 'text-text text-sm' }>
                 Guide price
               </p>
 
-              <h2 className="text-primary mt-2 text-4xl font-bold">
+              <h2 className={ 'text-primary mt-2 text-4xl font-bold' }>
                 &pound;2,500,000
               </h2>
             </div>
+          </div>
+
+          <div className={ 'w-full h-60 my-6 relative md:h-100 lg:h-120' }>
+            <Image 
+              src={ '/images/image1.jpg' }
+              alt={ 'property' }
+              fill
+              className={ 'w-full object-cover rounded-2xl shadow-sm' }
+            />
           </div>
         </div>
       </section>
