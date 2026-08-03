@@ -117,13 +117,23 @@ const LoginModal = () => {
       </div>
       
       <Button
-        variant={ 'outline'}
+        variant={ 'outline' }
         icon={ <FcGoogle size={ 22 } />}
         disabled={ loading }
         fullWidth={ true }
       >
         Continue with Google
       </Button>
+
+      <p className="text-gray-400 mt-6 text-sm text-center">
+        Dont&apos;t have an account?{ ' ' }
+        <span
+          className={ 'text-primary font-semibold cursor-pointer hover:underline' }
+          onClick= { openRegister }
+        >
+          Register
+        </span>
+      </p>
     </Modal>
   )
 }
