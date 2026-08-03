@@ -51,6 +51,10 @@ const LoginModal = () => {
     } else if ( values.password.length < 6 ) {
       newErrors.password = 'Enter a valid password with at least 6 characters'
     }
+
+    setErrors( newErrors )
+
+    return Object.keys( newErrors ).length === 0
   }
 
   return (
