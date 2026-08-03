@@ -8,6 +8,7 @@ const poppins = Poppins( {
   weight: [ '300', '400', '500', '600', '700', '800' ]
 } )
 
+import LoginModal from '@/components/modals/LoginModal'
 import RegisterModal from '@/components/modals/RegisterModal'
 
 export const metadata: Metadata = {
@@ -30,6 +31,7 @@ const RootLayout = ( {
       >
         { children }
         <RegisterModal />
+        <LoginModal />
       </body>
     </html>
   )

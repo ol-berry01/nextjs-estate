@@ -31,7 +31,7 @@ const Modal = ( { isOpen, onClose, title, children } : ModalProps ) => {
       <div
         className={ 
           `
-            bg-black transition-all duration-500 absolute inset-0
+            bg-black/35 transition-all duration-500 absolute inset-0
             ${ isOpen ? 'opacity-100' : 'opacity-0' }
           ` 
         } 
