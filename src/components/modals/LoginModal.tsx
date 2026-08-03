@@ -94,7 +94,10 @@ const LoginModal = () => {
           error={ errors.password }
           disabled={ loading }
         />
-        <Button>
+        <Button
+          type={ 'submit' }
+          fullWidth={ true }
+        >
           Continue
         </Button>
       </form>
