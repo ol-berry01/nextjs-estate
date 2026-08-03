@@ -3,6 +3,13 @@
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
 
+interface LoginValues {
+  emaail: string,
+  password: string
+}
+
+type LoginErrors = Partial<Record<keyof LoginValues, string>>
+
 const LoginModal = () => {
   const { openRegister, isLoginOpen, closeLogin } = useAuthModal()
 
