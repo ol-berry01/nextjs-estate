@@ -7,6 +7,8 @@ import useAuthModal from '@/store/useAuthModalStore'
 import Input from '../ui/Input'
 import Button from '../ui/Button'
 
+import { FcGoogle } from 'react-icons/fc'
+
 interface LoginValues {
   email: string,
   password: string
@@ -101,6 +103,27 @@ const LoginModal = () => {
           Continue
         </Button>
       </form>
+
+      {/* divider */}
+      <div className={ 'my-6 relative'}>
+        <div className={ 'absolute inset-0 flex items-center'}>
+          <div className={ 'w-full border-t border-gray-300' } />
+        </div>
+        <div className="text-xs uppercase relative flex justify-center">
+          <span className="bg-white text-gray-500 px-4">
+            Or
+          </span>
+        </div>
+      </div>
+      
+      <Button
+        variant={ 'outline'}
+        icon={ <FcGoogle size={ 22 } />}
+        disabled={ loading }
+        fullWidth={ true }
+      >
+        Continue with Google
+      </Button>
     </Modal>
   )
 }
