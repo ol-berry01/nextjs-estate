@@ -35,6 +35,24 @@ const LoginModal = () => {
     } ) )
   }
 
+  const validate = () => {
+    const newErrors: LoginErrors = {}
+
+    // validate the email
+    if ( ! values.email.trim() ) {
+      newErrors.email = 'Email is required'
+    } else if ( ! /^\S+@\S+\.\S+$/.test( values.email ) ) {
+      newErrors.email = 'Enter a valid email address'
+    }
+
+    // validate the password
+    if ( ! values.password.trim() ) {
+      newErrors.password = 'Password is required'
+    } else if ( values.password.length < 6 ) {
+      newErrors.password = 'Enter a valid password with at least 6 characters'
+    }
+  }
+
   return (
     <Modal
       isOpen={ isLoginOpen }
