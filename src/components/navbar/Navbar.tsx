@@ -113,8 +113,15 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
               <Button 
                 variant={ 'outline' } 
                 icon={ <FaHome /> }
-              >Add property</Button>
-              <Button variant={ 'outline' }>Login</Button>
+              >
+                Add property
+              </Button>
+              <Button 
+                variant={ 'outline' }
+                onClick={ openLogin }
+              >
+                Login
+              </Button>
             </div>
           </div>
         ) }
