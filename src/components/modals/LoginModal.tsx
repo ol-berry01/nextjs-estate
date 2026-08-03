@@ -21,6 +21,20 @@ const LoginModal = () => {
   } )
   const [ errors, setErrors ] = useState<LoginErrors>( {} )
 
+  const handleChange = ( e:React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target
+
+    setValues( ( prev ) => ( {
+      ...prev,
+      [ name ]:value
+    } ) )
+
+    setErrors( ( prev ) => ( {
+      ...prev,
+      [ name ]: undefined
+    } ) )
+  }
+
   return (
     <Modal
       isOpen={ isLoginOpen }
