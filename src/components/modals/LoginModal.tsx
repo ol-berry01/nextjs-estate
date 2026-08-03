@@ -4,6 +4,8 @@ import { useState } from 'react'
 
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
+import Input from '../ui/Input'
+import Button from '../ui/Button'
 
 interface LoginValues {
   email: string,
@@ -53,7 +55,6 @@ const LoginModal = () => {
     }
 
     setErrors( newErrors )
-
     return Object.keys( newErrors ).length === 0
   }
 
@@ -63,7 +64,40 @@ const LoginModal = () => {
       onClose={ closeLogin }
       title={ 'Login' }
     >
-      <p>Login modal</p>
+      <div className={ 'mb-6 space-y-1' }>
+        {/* header */}
+        <h2 className={ 'text-gray-900 text-2xl font-semibold' }>
+          Welcome back
+        </h2>
+        <p className={ 'text-gray-500 text-sm' }>
+          Login to your account to continue
+        </p>
+      </div>
+
+      {/* form */}
+      <form action="" className="space-y-8">
+        <Input 
+          id={ 'login-email' }
+          name={ 'email' }
+          label={ 'Email' }
+          value={ values.email }
+          onChange={ handleChange }
+          error={ errors.email }
+          disabled={ loading }
+        />
+        <Input 
+          id={ 'login-password' }
+          name={ 'password' }
+          label={ 'Password' }
+          value={ values.password }
+          onChange={ handleChange }
+          error={ errors.password }
+          disabled={ loading }
+        />
+        <Button>
+          Continue
+        </Button>
+      </form>
     </Modal>
   )
 }
