@@ -12,30 +12,36 @@ interface AuthModalStore {
 }
 
 const useAuthModal = create<AuthModalStore>( ( set ) => ( {
-  isLoginOpen: false
-  isRegisterOpen: false
+  isLoginOpen: false,
+  isRegisterOpen: false,
 
   openLogin: () => 
     set( {
       isLoginOpen: true,
       isRegisterOpen: false
-    } )
+    } ),
 
   closeLogin: () =>
     set( {
       isLoginOpen: false,
-    })
+    }),
 
   openRegister: () =>
     set( {
       isRegisterOpen: true,
       isLoginOpen: false
-    })
+    } ),
 
   closeRegister: () =>
     set( {
       isRegisterOpen: false
-    } )
+    } ),
+
+    closeAll: () => 
+      set( {
+        isLoginOpen: false,
+        isRegisterOpen: false
+      } )
   } ) 
 )
 
