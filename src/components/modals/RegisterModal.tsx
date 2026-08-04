@@ -71,7 +71,15 @@ const RegisterModal = () => {
       onClose={ closeRegister }
       title={ 'Register' }
     >
-      <p>Register modal</p>
+      <div className={ 'mb-6 space-y-1' }>
+        {/* header */}
+        <h2 className={ 'text-gray-900 text-2xl font-semibold' }>
+          Create an account
+        </h2>
+        <p className={ 'text-gray-500 text-sm' }>
+          Fill in your details to create a new account
+        </p>
+      </div>
     </Modal>
   )
 }
