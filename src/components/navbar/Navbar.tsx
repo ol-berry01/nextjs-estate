@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
+import useAuthModal from '@/store/useAuthModalStore'
+
 import Button from '@/components/ui/Button'
 
 import { FaHome } from 'react-icons/fa'
@@ -21,6 +23,7 @@ const navLinks = [
 
 const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
   const [ isOpen, setIsOpen ] = useState( false )
+  const { openLogin } = useAuthModal()
   const isTransparent = variant === 'transparent'
 
   return (
@@ -59,7 +62,10 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
               variant={ 'outline' } 
               icon={ <FaHome /> }
             >Add property</Button>
-            <Button variant={ 'outline' }>Login</Button>
+            <Button 
+              variant={ 'outline' }
+              onClick={ openLogin }
+            >Login</Button>
           </div>
 
           {/* mobile menu buttons */}
@@ -107,8 +113,15 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
               <Button 
                 variant={ 'outline' } 
                 icon={ <FaHome /> }
-              >Add property</Button>
-              <Button variant={ 'outline' }>Login</Button>
+              >
+                Add property
+              </Button>
+              <Button 
+                variant={ 'outline' }
+                onClick={ openLogin }
+              >
+                Login
+              </Button>
             </div>
           </div>
         ) }
