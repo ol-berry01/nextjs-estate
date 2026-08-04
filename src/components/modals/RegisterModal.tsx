@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from 'react'
+import Input from '../ui/Input'
+import Button from '../ui/Button'
 
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
@@ -71,8 +73,8 @@ const RegisterModal = () => {
       onClose={ closeRegister }
       title={ 'Register' }
     >
+      {/* header */}
       <div className={ 'mb-6 space-y-1' }>
-        {/* header */}
         <h2 className={ 'text-gray-900 text-2xl font-semibold' }>
           Create an account
         </h2>
@@ -80,6 +82,43 @@ const RegisterModal = () => {
           Fill in your details to create a new account
         </p>
       </div>
+
+      {/* form */}
+      <form action="" className="space-y-8">
+        <Input 
+          id={ 'login-name' }
+          name={ 'name' }
+          label={ 'Name' }
+          value={ values.name }
+          onChange={ handleChange }
+          error={ errors.name }
+          disabled={ loading }
+        />
+        <Input 
+          id={ 'login-email' }
+          name={ 'email' }
+          label={ 'Email' }
+          value={ values.email }
+          onChange={ handleChange }
+          error={ errors.email }
+          disabled={ loading }
+        />
+        <Input 
+          id={ 'login-password' }
+          name={ 'password' }
+          label={ 'Password' }
+          value={ values.password }
+          onChange={ handleChange }
+          error={ errors.password }
+          disabled={ loading }
+        />
+        <Button
+          type={ 'submit' }
+          fullWidth={ true }
+        >
+          Continue
+        </Button>
+      </form>
     </Modal>
   )
 }
