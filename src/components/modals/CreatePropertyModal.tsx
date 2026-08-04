@@ -1,6 +1,14 @@
+import Modal from './Modal'
+
 const CreatePropertyModal = () => {
   return (
-    <div>CreatePropertyModal</div>
+    <Modal
+      title={ 'Create a new listing' }
+      isOpen={ false }
+      onClose={ () => {} }
+    >
+      <p>Create property modal</p>
+    </Modal>
   )
 }
 
