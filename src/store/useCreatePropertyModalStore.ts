@@ -11,3 +11,5 @@ const useCreatePropertyModalStore = create<CreatePropertyModalStore>( ( set ) =>
   open: () => set( { isOpen: true } ),
   close: () => set( { isOpen: false } )
 } ) )
+
+export default useCreatePropertyModalStore

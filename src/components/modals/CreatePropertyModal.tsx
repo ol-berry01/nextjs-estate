@@ -1,6 +1,10 @@
 import Modal from './Modal'
 
+import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
+
 const CreatePropertyModal = () => {
+  const  {} = useCreatePropertyModalStore()
+
   return (
     <Modal
       title={ 'Create a new listing' }
