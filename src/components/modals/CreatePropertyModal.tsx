@@ -3,13 +3,13 @@ import Modal from './Modal'
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
 
 const CreatePropertyModal = () => {
-  const  {} = useCreatePropertyModalStore()
+  const  { isOpen, close } = useCreatePropertyModalStore()
 
   return (
     <Modal
       title={ 'Create a new listing' }
-      isOpen={ false }
-      onClose={ () => {} }
+      isOpen={ isOpen }
+      onClose={ close }
     >
       <p>Create property modal</p>
     </Modal>
