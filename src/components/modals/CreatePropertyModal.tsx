@@ -16,8 +16,33 @@ const STEPS = {
 }
 
 const CreatePropertyModal = () => {
-  const [ steps, setSteps ] = useState( STEPS.TYPE )
+  const [ step, setStep ] = useState( STEPS.TYPE )
   const { isOpen, close } = useCreatePropertyModalStore()
+
+  const stepTitle = () => {
+    switch ( step ) {
+      case STEPS.TYPE:
+        return 'Select property type'
+      
+      case STEPS.LOCATION:
+        return 'Set the property location'
+      
+      case STEPS.DETAILS:
+        return 'Share some property details'
+      
+      case STEPS.FEATURES:
+        return 'Highlight some property features'
+      
+      case STEPS.IMAGE:
+        return 'Upload property image'
+      
+      case STEPS.PRICING:
+        return 'Set property price'
+
+      default:
+        return ''
+    }
+  }
 
   return (
     <Modal
@@ -25,7 +50,14 @@ const CreatePropertyModal = () => {
       isOpen={ isOpen }
       onClose={ close }
     >
-      <p>Create Property Modal</p>
+      <div className={ 'text-gray-500 mb-6 text-sm flex justify-between items-center' }>
+        <span className={ 'text-primary font-medium' }>
+          { stepTitle() }
+        </span>
+        <span>
+            Step { step + 1 } of { Object.keys( STEPS ).length }
+        </span>
+      </div>
     </Modal>
   )
 }
