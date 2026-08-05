@@ -54,6 +54,7 @@ const CreatePropertyModal = () => {
       isOpen={ isOpen }
       onClose={ close }
     >
+      {/* modal header */}
       <div className={ 'text-gray-500 mb-6 text-sm flex justify-between items-center' }>
         <span className={ 'text-primary font-medium' }>
           { stepTitle() }
@@ -63,7 +64,17 @@ const CreatePropertyModal = () => {
         </span>
       </div>
 
-      <div className="mt-8 flex justify-between gap-3">
+      {/* modal body */}
+      <div className={ 'text-gray-400 min-h-55 p-6 border boder-dashed border-gray-300 rounded-xl' }>
+        { step === STEPS.TYPE && (
+          <div className={ 'w-full max-h-[50vh] overflow-y-scoll no-scrollbar grid grid-cols-2 gap-4' }>
+              
+          </div>
+        ) }
+      </div>
+
+      {/* buttons */}
+      <div className={ "mt-8 flex justify-between gap-3"}>
         { step > STEPS.TYPE && (
           <Button
           variant={ 'outline' }
