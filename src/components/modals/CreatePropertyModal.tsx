@@ -1,3 +1,5 @@
+'use client'
+
 import Modal from './Modal'
 
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
@@ -11,7 +13,7 @@ const CreatePropertyModal = () => {
       isOpen={ isOpen }
       onClose={ close }
     >
-      <p>Create property modal</p>
+      <CreatePropertyModal />
     </Modal>
   )
 }

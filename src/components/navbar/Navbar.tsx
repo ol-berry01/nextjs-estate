@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import useAuthModal from '@/store/useAuthModalStore'
+import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
 
 import Button from '@/components/ui/Button'
 
@@ -24,6 +25,7 @@ const navLinks = [
 const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
   const [ isOpen, setIsOpen ] = useState( false )
   const { openLogin } = useAuthModal()
+  const { open: openCreateModal } = useCreatePropertyModalStore()
   const isTransparent = variant === 'transparent'
 
   return (
@@ -61,6 +63,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             <Button 
               variant={ 'outline' } 
               icon={ <FaHome /> }
+              onClick={ openCreateModal }
             >Add property</Button>
             <Button 
               variant={ 'outline' }
@@ -113,6 +116,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
               <Button 
                 variant={ 'outline' } 
                 icon={ <FaHome /> }
+                onClick={ openCreateModal }
               >
                 Add property
               </Button>
