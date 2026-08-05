@@ -5,6 +5,7 @@ import { useState } from 'react'
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
 
 import Modal from './Modal'
+import Button from '../ui/Button'
 
 const STEPS = {
   TYPE: 0,
@@ -17,6 +18,7 @@ const STEPS = {
 
 const CreatePropertyModal = () => {
   const [ step, setStep ] = useState( STEPS.TYPE )
+  const [ loading, setLoading ] = useState( false )
   const { isOpen, close } = useCreatePropertyModalStore()
 
   const stepTitle = () => {
@@ -44,6 +46,8 @@ const CreatePropertyModal = () => {
     }
   }
 
+  const createListing = () => {}
+
   return (
     <Modal
       title={ 'Create a new listing' }
@@ -57,6 +61,27 @@ const CreatePropertyModal = () => {
         <span>
             Step { step + 1 } of { Object.keys( STEPS ).length }
         </span>
+      </div>
+
+      <div className="mt-8 flex justify-between gap-3">
+        { step > STEPS.TYPE && (
+          <Button
+          variant={ 'outline' }
+          onClick={ () => setStep( 
+            ( prev ) => prev - 1 ) 
+          }
+          >
+            Back
+          </Button>
+        ) }
+
+        <Button
+          className={ 'ml-auto' }
+          onClick={ () => step < STEPS.PRICING ? setStep( ( prev ) => prev + 1 ) : createListing() }
+          loading={ loading }
+        >
+          { step < STEPS.PRICING ? 'Next' : 'Create' }
+        </Button>
       </div>
     </Modal>
   )
