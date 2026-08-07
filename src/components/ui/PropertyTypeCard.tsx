@@ -1,7 +1,6 @@
 import clsx from 'clsx'
 
 import { IconType } from 'react-icons'
-import Button from './Button'
 
 interface PropertyTypeCardProps {
   label: string,
@@ -12,12 +11,11 @@ interface PropertyTypeCardProps {
 
 const PropertyTypeCard = ( { label, icon: Icon, selected, onClick }: PropertyTypeCardProps ) => {
   return (
-    <Button 
+    <button 
       className={ clsx( 
-        ` text-gray-700 p-4 border rounded-xl text-left transition flex flex-col gap-3 hover:border-black`,
-        selected ? 'bg-gray-50 border-black' : 'border-gray-200'
+        `text-gray-700 p-4 border rounded-xl text-left transition flex flex-col gap-3 hover:bg-primary/5 hover:text-primary hover:border-primary cursor-pointer`,
+        selected ? 'bg-primary/5 text-primary border-primary' : 'border-gray-200'
       ) }
-      variant={ 'outline' }
       type={ 'button' }
       onClick={ onClick}
     >
@@ -25,7 +23,7 @@ const PropertyTypeCard = ( { label, icon: Icon, selected, onClick }: PropertyTyp
       <span className={ 'font-medium' }>
         { label }
       </span>
-    </Button>
+    </button>
   )
 }
 
