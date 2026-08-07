@@ -72,7 +72,9 @@ const CreatePropertyModal = () => {
         { step === STEPS.TYPE && (
           <div className={ 'w-full max-h-[50vh] overflow-y-scoll no-scrollbar grid grid-cols-2 gap-4' }>
               { propertyTypes.map( ( item ) => (
-                <PropertyTypeCard />
+                <PropertyTypeCard
+                  key={ item.slug }
+                />
               ) ) }
           </div>
         ) }
