@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
+import propertyTypes from '@/constants/PropertyTypes'
 
 import Modal from './Modal'
 import Button from '../ui/Button'
@@ -68,7 +69,9 @@ const CreatePropertyModal = () => {
       <div className={ 'text-gray-400 min-h-55 p-6 border boder-dashed border-gray-300 rounded-xl' }>
         { step === STEPS.TYPE && (
           <div className={ 'w-full max-h-[50vh] overflow-y-scoll no-scrollbar grid grid-cols-2 gap-4' }>
-              
+              { propertyTypes.map( ( item ) => (
+                <p>{ item.label }</p>
+              ) ) }
           </div>
         ) }
       </div>

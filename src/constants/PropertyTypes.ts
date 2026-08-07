@@ -3,7 +3,7 @@ import { LuBuilding, LuBuilding2, LuLandPlot, LuHotel, LuTrees, LuHousePlus } fr
 
 const propertyTypes = [
   {
-    labe: 'House',
+    label: 'House',
     icon: FaHome,
     slug: 'house'
   },
@@ -23,7 +23,7 @@ const propertyTypes = [
     slug: 'villa'
   },
   {
-    labe: 'Penthouse',
+    label: 'Penthouse',
     icon: LuBuilding2,
     slug: 'penthouse'
   },
@@ -38,7 +38,7 @@ const propertyTypes = [
     slug: 'office'
   },
   {
-    labe: 'Warehouse',
+    label: 'Warehouse',
     icon: FaWarehouse,
     slug: 'warehouse'
   },
