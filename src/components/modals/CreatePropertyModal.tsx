@@ -23,6 +23,7 @@ const CreatePropertyModal = () => {
   const [ step, setStep ] = useState( STEPS.TYPE )
   const [ loading, setLoading ] = useState( false )
   const { isOpen, close } = useCreatePropertyModalStore()
+  const [ propertyType, setPropertyType ] = useState( '' )
 
   const stepTitle = () => {
     switch ( step ) {
@@ -74,6 +75,10 @@ const CreatePropertyModal = () => {
               { propertyTypes.map( ( item ) => (
                 <PropertyTypeCard
                   key={ item.slug }
+                  label={ item.label }
+                  icon={ item.icon }
+                  selected={ propertyType === item.slug }
+                  onClick={ () => setPropertyType( item.slug ) }
                 />
               ) ) }
           </div>
