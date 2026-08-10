@@ -24,6 +24,8 @@ const CreatePropertyModal = () => {
   const [ loading, setLoading ] = useState( false )
   const { isOpen, close } = useCreatePropertyModalStore()
   const [ propertyType, setPropertyType ] = useState( '' )
+  const [ location, setLocation ] = useState( '' )
+  const [ address, setAddress ] = useState( '' )
 
   const stepTitle = () => {
     switch ( step ) {
@@ -70,6 +72,8 @@ const CreatePropertyModal = () => {
 
       {/* modal body */}
       <div className={ 'text-gray-400 min-h-55 p-6 border boder-dashed border-gray-300 rounded-xl' }>
+        
+        {/* step: property type */}
         { step === STEPS.TYPE && (
           <div className={ 'w-full max-h-[50vh] overflow-y-scoll no-scrollbar grid grid-cols-2 gap-4' }>
               { propertyTypes.map( ( item ) => (
@@ -81,6 +85,13 @@ const CreatePropertyModal = () => {
                   onClick={ () => setPropertyType( item.slug ) }
                 />
               ) ) }
+          </div>
+        ) }
+
+        {/* step: location */}
+        { step === STEPS.LOCATION && (
+          <div className=" w-full space-y-6">
+
           </div>
         ) }
       </div>
