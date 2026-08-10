@@ -8,6 +8,7 @@ import propertyTypes from '@/constants/PropertyTypes'
 import PropertyTypeCard from '@/components/ui/PropertyTypeCard'
 
 import Modal from './Modal'
+import Input from '../ui/Input'
 import Button from '../ui/Button'
 
 const STEPS = {
@@ -91,7 +92,18 @@ const CreatePropertyModal = () => {
         {/* step: location */}
         { step === STEPS.LOCATION && (
           <div className=" w-full space-y-6">
-
+            <Input
+              name={ 'location' }
+              label={ 'Location' }
+              value={ location }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setLocation( e.target.value ) }
+            />
+            <Input
+              name={ 'address' }
+              label={ 'Address' }
+              value={ address }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setAddress( e.target.value ) }
+            />
           </div>
         ) }
       </div>
