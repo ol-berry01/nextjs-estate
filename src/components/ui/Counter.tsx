@@ -8,6 +8,13 @@ interface CounterProps {
 }
 
 const Counter = ( { title, subTitle, value, onChange, min = 1, max = 20 }:CounterProps ) => {
+  const increase = () => {
+    if ( value < max ) onChange( value + 1 )
+  }
+  const decrease = () => {
+    if ( value > min ) onChange( value - 1 )
+  }
+
   return (
     <div>Counter</div>
   )
