@@ -9,6 +9,7 @@ import PropertyTypeCard from '@/components/ui/PropertyTypeCard'
 
 import Modal from './Modal'
 import Input from '../ui/Input'
+import Counter from '../ui/Counter'
 import Button from '../ui/Button'
 
 const STEPS = {
@@ -104,6 +105,15 @@ const CreatePropertyModal = () => {
               value={ address }
               onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setAddress( e.target.value ) }
             />
+          </div>
+        ) }
+
+        {/* step: details */}
+        { step === STEPS.DETAILS && (
+          <div className="w-full space-y-4">
+            <Counter />
+            <Counter />
+            <Counter />
           </div>
         ) }
       </div>
