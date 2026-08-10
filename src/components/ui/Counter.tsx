@@ -34,11 +34,15 @@ const Counter = ( { title, subTitle, value, onChange, min = 1, max = 20 }:Counte
         >
           <LuMinus size={ 16 } />
         </button>
+
+        <span className={ 'text-gray-600 w-6 font-medium text-center' }>
+          { value }
+        </span>
         
         <button
           onClick={ increase }
           disabled={ max === value }
-          className={ 'w-8 h-8 border border-gray-300 rounded-full transition flex justify-center items-center hover:border-black disabled:opacity-30 disabled:cursor-not-allowed' }
+          className={ 'w-8 h-8 border border-gray-300 rounded-full cursor-pointer transition flex justify-center items-center hover:border-black disabled:opacity-30 disabled:cursor-not-allowed' }
         >
           <LuPlus size={ 16 } />
         </button>

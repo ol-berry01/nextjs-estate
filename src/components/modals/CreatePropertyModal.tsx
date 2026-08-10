@@ -28,6 +28,11 @@ const CreatePropertyModal = () => {
   const [ propertyType, setPropertyType ] = useState( '' )
   const [ location, setLocation ] = useState( '' )
   const [ address, setAddress ] = useState( '' )
+  const [ bedrooms, setBedrooms ] = useState( 1 )
+  const [ bathrooms, setBathrooms ] = useState( 1 )
+  const [ parkingSpaces, setParkingSpaces ] = useState( 0 )
+  const [ area, setArea ] = useState( '' )
+
 
   const stepTitle = () => {
     switch ( step ) {
@@ -111,9 +116,35 @@ const CreatePropertyModal = () => {
         {/* step: details */}
         { step === STEPS.DETAILS && (
           <div className="w-full space-y-4">
-            <Counter />
-            <Counter />
-            <Counter />
+            <Counter 
+              title={ 'Bedrooms' }
+              subTitle={ 'How many bedrooms' }
+              value={ bedrooms }
+              onChange={ setBedrooms }
+              min={ 1 }
+              />
+            <Counter 
+              title={ 'Bathrooms' }
+              subTitle={ 'How many bathrooms' }
+              value={ bathrooms }
+              onChange={ setBathrooms }
+              min={ 1 }
+              />
+            <Counter 
+              title={ 'Parking spaces' }
+              subTitle={ 'How many parking spaces' }
+              value={ parkingSpaces }
+              onChange={ setParkingSpaces }
+              min={ 0 }
+            />
+
+            <Input 
+              name={ 'area' }
+              label={ 'Property area (sq metres)' }
+              type={ 'number' }
+              value={ area }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setArea( e.target.value ) }
+            />
           </div>
         ) }
       </div>
