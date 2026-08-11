@@ -37,6 +37,8 @@ const CreatePropertyModal = () => {
   const [ description, setDescription ] = useState( '' )
   const [ image, setImage ] = useState<null | File>( null )
   const [ preview, setPreview ] = useState<null | string>( null )
+  const [ listingType, setListingType ] = useState<'rent' | 'sale'>( 'sale' )
+  const [ price, setPrice ] = useState( '' )
 
 
   const stepTitle = () => {
@@ -183,6 +185,15 @@ const CreatePropertyModal = () => {
               preview={ preview }
               onChange={ handleImageChange }
             />
+          </div>
+        ) }
+
+        {/* step: pricing */}
+        { step === STEPS.PRICING && (
+          <div className="space-y-6">
+            <select name="" id="">
+
+            </select>
           </div>
         ) }
       </div>
