@@ -191,9 +191,24 @@ const CreatePropertyModal = () => {
         {/* step: pricing */}
         { step === STEPS.PRICING && (
           <div className="space-y-6">
-            <select name="" id="">
-
+            <select 
+              value={ listingType } 
+              onChange={ ( e ) => setListingType( e.target.value as 'sale' | 'rent' ) }
+              className={ 'w-full h-13 px-4 border border-black/10 rounded-2xl' }
+              name="" 
+              id=""
+            >
+              <option value={ 'rent' }>For rent</option>
+              <option value={ 'sale' }>For sale</option>
             </select>
+
+            <Input 
+              name={ 'price' }
+              label={  listingType === 'sale' ? 'Property price' : 'Monthly price' }
+              type={ 'number' }
+              value={ price }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setPrice( e.target.value ) }
+            />
           </div>
         ) }
       </div>
