@@ -11,6 +11,7 @@ import Modal from './Modal'
 import Input from '../ui/Input'
 import Counter from '../ui/Counter'
 import Button from '../ui/Button'
+import ImageUpload from '../ui/ImageUpload'
 
 const STEPS = {
   TYPE: 0,
@@ -171,6 +172,7 @@ const CreatePropertyModal = () => {
         {/* step: image */}
         { step === STEPS.IMAGE && (
           <div className="space-y-6">
+            <ImageUpload />
           </div>
         ) }
       </div>
