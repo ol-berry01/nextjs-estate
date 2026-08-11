@@ -167,6 +167,12 @@ const CreatePropertyModal = () => {
             />
           </div>
         ) }
+        
+        {/* step: image */}
+        { step === STEPS.IMAGE && (
+          <div className="space-y-6">
+          </div>
+        ) }
       </div>
 
       {/* buttons */}
