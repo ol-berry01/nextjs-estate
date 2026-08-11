@@ -32,6 +32,8 @@ const CreatePropertyModal = () => {
   const [ bathrooms, setBathrooms ] = useState( 1 )
   const [ parkingSpaces, setParkingSpaces ] = useState( 0 )
   const [ area, setArea ] = useState( '' )
+  const [ title, setTitle ] = useState( '' )
+  const [ description, setDescription ] = useState( '' )
 
 
   const stepTitle = () => {
@@ -144,6 +146,24 @@ const CreatePropertyModal = () => {
               type={ 'number' }
               value={ area }
               onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setArea( e.target.value ) }
+            />
+          </div>
+        ) }
+
+        {/* step: features */}
+        { step === STEPS.FEATURES && (
+          <div className="space-y-6">
+            <Input 
+              name={ 'title' }
+              label={ 'Property title' }
+              value={ title }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setTitle( e.target.value ) }
+            />
+            <Input 
+              name={ 'description' }
+              label={ 'Property description' }
+              value={ description }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setDescription( e.target.value ) }
             />
           </div>
         ) }
