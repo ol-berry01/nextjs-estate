@@ -60,21 +60,21 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
               </div>
             </div>
 
-            <h2 className="text-white mt-5 text-xl font-bold">
+            <h2 className={ 'text-white mt-5 text-xl font-bold' }>
               { property.title }
             </h2>
 
             {/* listing features */}
-            <div className="mt-5 pt-5 border-t border-white/10 flex flex-wrap gap-3">
-                <div className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-                  { property.bedrooms } Beds
-                </div>
-                <div className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-                  { property.bathrooms } Bath
-                </div>
-                <div className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-                  { property.area }m<sup>3</sup>
-                </div>
+            <div className={ 'mt-5 pt-5 border-t border-white/10 flex flex-wrap gap-3' }>
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm' }>
+                { property.bedrooms } Beds
+              </div>
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm' }>
+                { property.bathrooms } Bath
+              </div>
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm' }>
+                { property.area }m<sup>3</sup>
+              </div>
             </div>
           </div>
         </div>

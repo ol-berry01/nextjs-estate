@@ -10,6 +10,7 @@ const poppins = Poppins( {
 
 import LoginModal from '@/components/modals/LoginModal'
 import RegisterModal from '@/components/modals/RegisterModal'
+import CreatePropertyModal from '@/components/modals/CreatePropertyModal'
 
 export const metadata: Metadata = {
   title: 'Real estate marketplace',
@@ -32,6 +33,7 @@ const RootLayout = ( {
         { children }
         <RegisterModal />
         <LoginModal />
+        <CreatePropertyModal />
       </body>
     </html>
   )
