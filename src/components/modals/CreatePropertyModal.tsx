@@ -64,7 +64,7 @@ const CreatePropertyModal = () => {
     }
   }
 
-  const handleChange = ( file: File ) => {
+  const handleImageChange = ( file: File ) => {
     setImage( file )
     setPreview( URL.createObjectURL( file ) )
   }
@@ -179,7 +179,10 @@ const CreatePropertyModal = () => {
         {/* step: image */}
         { step === STEPS.IMAGE && (
           <div className="space-y-6">
-            <ImageUpload />
+            <ImageUpload 
+              preview={ preview }
+              onChange={ handleImageChange }
+            />
           </div>
         ) }
       </div>
