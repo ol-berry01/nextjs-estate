@@ -35,6 +35,8 @@ const CreatePropertyModal = () => {
   const [ area, setArea ] = useState( '' )
   const [ title, setTitle ] = useState( '' )
   const [ description, setDescription ] = useState( '' )
+  const [ image, setImage ] = useState<null | File>( null )
+  const [ preview, setPreview ] = useState<null | string>( null )
 
 
   const stepTitle = () => {
@@ -60,6 +62,11 @@ const CreatePropertyModal = () => {
       default:
         return ''
     }
+  }
+
+  const handleChange = ( file: File ) => {
+    setImage( file )
+    setPreview( URL.createObjectURL( file ) )
   }
 
   const createListing = () => {}
