@@ -45,6 +45,14 @@ const ImageUpload = ( { preview, onChange }: ImageUploadProps ) => {
           />
         ) }
       </label>
+
+      <input 
+        type={ 'file' }
+        id={'image-upload' }
+        accept={ 'images/*' }
+        onChange={ handleUpload }
+        className={ 'hidden' }
+      />
     </div>
   )
 }
