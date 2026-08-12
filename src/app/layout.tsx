@@ -35,6 +35,7 @@ const RootLayout = ( {
         <RegisterModal />
         <LoginModal />
         <CreatePropertyModal />
+        <FilterModal />
       </body>
     </html>
   )

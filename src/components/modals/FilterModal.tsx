@@ -1,3 +1,5 @@
+'use client'
+
 import useFilterModalStore from '@/store/useFilterModalStore'
 
 import Modal from './Modal'
