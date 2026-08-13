@@ -5,6 +5,7 @@ import useFilterModalStore from '@/store/useFilterModalStore'
 
 import propertyTypes from '@/constants/PropertyTypes'
 
+import Button from '../ui/Button'
 import Modal from './Modal'
 import PropertyTypeCard from '../ui/PropertyTypeCard'
 
@@ -40,6 +41,8 @@ const FilterModal = () => {
     }
   }
 
+  const applyFilter = () => {}
+
   return (
     <Modal
       title={ 'Filter properties' }
@@ -71,6 +74,27 @@ const FilterModal = () => {
             ) ) }
           </div>
         ) }
+      </div>
+
+      {/* buttons */}
+      <div className={ "mt-8 flex justify-between gap-3"}>
+        { step > STEPS.TYPE && (
+          <Button
+          variant={ 'outline' }
+          onClick={ () => setStep( 
+            ( prev ) => prev - 1 ) 
+          }
+          >
+            Back
+          </Button>
+        ) }
+
+        <Button
+          className={ 'ml-auto' }
+          onClick={ () => step < STEPS.PRICING ? setStep( ( prev ) => prev + 1 ) : applyFilter() }
+        >
+          { step < STEPS.PRICING ? 'Next' : 'Apply filter' }
+        </Button>
       </div>
     </Modal>
   )
