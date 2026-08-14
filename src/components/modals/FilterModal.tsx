@@ -62,6 +62,7 @@ const FilterModal = () => {
 
       {/* filter modal: body */}
       <div className={ 'text-gray-400 min-h-55 p-6 border boder-dashed border-gray-300 rounded-xl' }>
+        {/* flter modal: location */}
         { step === STEPS.TYPE && (
           <div className={ 'w-full max-h-[50vh] overflow-y-scoll no-scrollbar grid grid-cols-2 gap-4' }>
             { propertyTypes.map( ( item ) => (
@@ -91,6 +92,30 @@ const FilterModal = () => {
               value={ address }
               onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setAddress( e.target.value ) }
             />
+          </div>
+        ) }
+
+        {/* filter modal: pricing */}
+        { step === STEPS.PRICING && (
+          <div className={ 'grid grid-cols-2 gap-4' }>
+            <div>
+              <Input 
+                label={ 'Min price' }
+                name={ 'min-price' }
+                type={ 'number' }
+                value={ minPrice }
+                onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setMinPrice( e.target.value ) }
+              />
+            </div>
+            <div>
+              <Input 
+                label={ 'Max price' }
+                name={ 'max-price' }
+                type={ 'number' }
+                value={ maxPrice }
+                onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setMaxPrice( e.target.value ) }
+              />
+            </div>
           </div>
         ) }
       </div>
