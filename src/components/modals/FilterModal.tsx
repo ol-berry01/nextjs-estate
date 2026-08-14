@@ -6,6 +6,7 @@ import useFilterModalStore from '@/store/useFilterModalStore'
 import propertyTypes from '@/constants/PropertyTypes'
 
 import Button from '../ui/Button'
+import Input from '../ui/Input'
 import Modal from './Modal'
 import PropertyTypeCard from '../ui/PropertyTypeCard'
 
@@ -72,6 +73,24 @@ const FilterModal = () => {
                 onClick={ () => setPropertyType( item.slug ) }
               />
             ) ) }
+          </div>
+        ) }
+
+        {/* filter modal: location */}
+        { step === STEPS.LOCATION && (
+          <div className=" w-full space-y-6">
+            <Input
+              name={ 'location' }
+              label={ 'Location' }
+              value={ location }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setLocation( e.target.value ) }
+            />
+            <Input
+              name={ 'address' }
+              label={ 'Address' }
+              value={ address }
+              onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setAddress( e.target.value ) }
+            />
           </div>
         ) }
       </div>
