@@ -93,6 +93,7 @@ const RegisterModal = () => {
       }
 
       toast.success( 'Registration successful' )
+      router.refresh()
     } catch ( error ) {
       toast.error( error instanceof Error ? error.message : 'Something went wrong, please try again' )
     } finally {
@@ -117,7 +118,7 @@ const RegisterModal = () => {
       </div>
 
       {/* form */}
-      <form action="" className="space-y-8">
+      <form onSubmit={ onSubmit } className={ 'space-y-8' }>
         <Input 
           id={ 'login-name' }
           name={ 'name' }
