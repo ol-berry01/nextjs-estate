@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import Input from '../ui/Input'
 import Button from '../ui/Button'
 
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
+import { authClient } from '@/lib/auth-client'
 
 import { FcGoogle } from 'react-icons/fc'
 
@@ -19,6 +21,7 @@ interface RegisterValues {
 type RegisterErrors = Partial<Record<keyof RegisterValues, string>>
 
 const RegisterModal = () => {
+  const router = useRouter()
   const { openLogin, isRegisterOpen, closeRegister } = useAuthModal()
   const [ loading, setLoading ] = useState( false )
   const [ values, setValues ] = useState<RegisterValues>( {
@@ -76,7 +79,20 @@ const RegisterModal = () => {
     if ( ! validate ) return
 
     try {
-      
+      setLoading( true )
+
+      const { error } = await authClient.signUp.email( {
+        name: values.name,
+        email: values.email,
+        password: values.password
+      } )
+
+      if ( error ) {
+        toast.error( error.message as string )
+        return
+      }
+
+      toast.success( 'Registration successful' )
     } catch ( error ) {
       toast.error( error instanceof Error ? error.message : 'Something went wrong, please try again' )
     } finally {
