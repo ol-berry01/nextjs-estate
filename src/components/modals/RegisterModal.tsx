@@ -27,6 +27,10 @@ const RegisterModal = () => {
   } )
   const [ errors, setErrors ] = useState<RegisterErrors>( {} )
 
+  const onSubmit = async ( e:React.SubmitEvent ) => {
+    e.preventDefault()
+  }
+
   const handleChange = ( e:React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target
 
