@@ -94,6 +94,12 @@ const RegisterModal = () => {
 
       toast.success( 'Registration successful' )
       router.refresh()
+      setValues( { 
+        name: '',
+        email: '',
+        password: ''
+      } )
+      closeRegister()
     } catch ( error ) {
       toast.error( error instanceof Error ? error.message : 'Something went wrong, please try again' )
     } finally {
@@ -149,6 +155,7 @@ const RegisterModal = () => {
         <Button
           type={ 'submit' }
           fullWidth={ true }
+          loading={ loading }
         >
           Continue
         </Button>
