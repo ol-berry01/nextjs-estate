@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { toast } from 'react-hot-toast'
 import Input from '../ui/Input'
 import Button from '../ui/Button'
 
@@ -77,7 +78,7 @@ const RegisterModal = () => {
     try {
       
     } catch ( error ) {
-      
+      toast.error( error instanceof Error ? error.message : 'Something went wrong, please try again' )
     } finally {
       setLoading( false )
     }
