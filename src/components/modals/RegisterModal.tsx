@@ -1,11 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import Input from '../ui/Input'
-import Button from '../ui/Button'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
+import { authClient } from '@/lib/auth-client'
+import signInWithGoogle from '@/services/signInWithGoogle'
+import Input from '../ui/Input'
+import Button from '../ui/Button'
 
 import { FcGoogle } from 'react-icons/fc'
 
@@ -18,6 +22,7 @@ interface RegisterValues {
 type RegisterErrors = Partial<Record<keyof RegisterValues, string>>
 
 const RegisterModal = () => {
+  const router = useRouter()
   const { openLogin, isRegisterOpen, closeRegister } = useAuthModal()
   const [ loading, setLoading ] = useState( false )
   const [ values, setValues ] = useState<RegisterValues>( {
@@ -69,6 +74,40 @@ const RegisterModal = () => {
     return Object.keys( newErrors ).length === 0
   }
 
+  const onSubmit = async ( e:React.SubmitEvent ) => {
+    e.preventDefault()
+
+    if ( ! validate ) return
+
+    try {
+      setLoading( true )
+
+      const { error } = await authClient.signUp.email( {
+        name: values.name,
+        email: values.email,
+        password: values.password
+      } )
+
+      if ( error ) {
+        toast.error( error.message as string )
+        return
+      }
+
+      toast.success( 'Registration successful' )
+      router.refresh()
+      setValues( { 
+        name: '',
+        email: '',
+        password: ''
+      } )
+      closeRegister()
+    } catch ( error ) {
+      toast.error( error instanceof Error ? error.message : 'Something went wrong, please try again' )
+    } finally {
+      setLoading( false )
+    }
+  }
+
   return (
     <Modal
       isOpen={ isRegisterOpen }
@@ -86,7 +125,7 @@ const RegisterModal = () => {
       </div>
 
       {/* form */}
-      <form action="" className="space-y-8">
+      <form onSubmit={ onSubmit } className={ 'space-y-8' }>
         <Input 
           id={ 'login-name' }
           name={ 'name' }
@@ -117,6 +156,7 @@ const RegisterModal = () => {
         <Button
           type={ 'submit' }
           fullWidth={ true }
+          loading={ loading }
         >
           Continue
         </Button>
@@ -139,6 +179,7 @@ const RegisterModal = () => {
         icon={ <FcGoogle size={ 22 } />}
         disabled={ loading }
         fullWidth={ true }
+        onClick={ signInWithGoogle }
       >
         Continue with Google
       </Button>

@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 import useAuthModal from '@/store/useAuthModalStore'
+import { authClient } from '@/lib/auth-client'
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
 
 import Button from '@/components/ui/Button'
@@ -23,10 +25,17 @@ const navLinks = [
 ]
 
 const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
+  const router = useRouter()
+  const { data: session, isPending } = authClient.useSession()
   const [ isOpen, setIsOpen ] = useState( false )
   const { openLogin } = useAuthModal()
   const { open: openCreateModal } = useCreatePropertyModalStore()
   const isTransparent = variant === 'transparent'
+
+  const handleLogout = async () => {
+    await authClient.signOut()
+    router.refresh()
+  }
 
   return (
     <header className={ `w-full top-0 left-0 z-50 ${ isTransparent ? 'absolute' : 'bg-card sticky border-b border-black/5' }` }>
@@ -60,15 +69,34 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
 
           {/* desktop buttons */}
           <div className={ 'hidden lg:flex items-center gap-4' }>
-            <Button 
-              variant={ 'outline' } 
-              icon={ <FaHome /> }
-              onClick={ openCreateModal }
-            >Add property</Button>
-            <Button 
-              variant={ 'outline' }
-              onClick={ openLogin }
-            >Login</Button>
+            { ! isPending && session && (
+              <Button 
+                variant={ 'outline' } 
+                icon={ <FaHome /> }
+                onClick={ openCreateModal }
+              >
+                Add property
+              </Button>
+            ) }
+            {
+              session ?
+              (
+                <Button 
+                  variant={ 'outline' }
+                  onClick={ handleLogout }
+                >
+                  Logout
+                </Button>
+              ) :
+              (
+                <Button 
+                  variant={ 'outline' }
+                  onClick={ openLogin }
+                >
+                  Login
+                </Button>
+              )
+            }
           </div>
 
           {/* mobile menu buttons */}
@@ -113,19 +141,36 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             </div>
 
             <div className={ 'mt-4 flex flex-col gap-3' }>
-              <Button 
-                variant={ 'outline' } 
-                icon={ <FaHome /> }
-                onClick={ openCreateModal }
-              >
-                Add property
-              </Button>
-              <Button 
-                variant={ 'outline' }
-                onClick={ openLogin }
-              >
-                Login
-              </Button>
+              { 
+                ! isPending && session && (
+                  <Button 
+                    variant={ 'outline' } 
+                    icon={ <FaHome /> }
+                    onClick={ openCreateModal }
+                  >
+                    Add property
+                  </Button>
+                ) 
+              }
+              {
+                session ?
+                (
+                  <Button 
+                    variant={ 'outline' }
+                    onClick={ handleLogout }
+                  >
+                    Logout
+                  </Button>
+                ) :
+                (
+                  <Button 
+                    variant={ 'outline' }
+                    onClick={ openLogin }
+                  >
+                    Login
+                  </Button>
+                )
+              }
             </div>
           </div>
         ) }

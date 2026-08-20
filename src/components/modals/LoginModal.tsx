@@ -1,9 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-hot-toast'
 
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
+import { authClient } from '@/lib/auth-client'
+import signInWithGoogle from '@/services/signInWithGoogle'
 import Input from '../ui/Input'
 import Button from '../ui/Button'
 
@@ -17,6 +21,7 @@ interface LoginValues {
 type LoginErrors = Partial<Record<keyof LoginValues, string>>
 
 const LoginModal = () => {
+  const router = useRouter()
   const { openRegister, isLoginOpen, closeLogin } = useAuthModal()
   const [ loading, setLoading ] = useState( false )
   const [ values, setValues ] = useState<LoginValues>( {
@@ -60,6 +65,38 @@ const LoginModal = () => {
     return Object.keys( newErrors ).length === 0
   }
 
+  const onSubmit = async ( e:React.SubmitEvent ) => {
+    e.preventDefault()
+
+    if ( ! validate ) return
+
+    try {
+      setLoading( true )
+
+      const { error } = await authClient.signIn.email( {
+        email: values.email,
+        password: values.password
+      } )
+
+      if ( error ) {
+        toast.error( error.message as string )
+        return
+      }
+
+      toast.success( 'Login successful' )
+      router.refresh()
+      setValues( { 
+        email: '',
+        password: ''
+      } )
+      closeLogin()
+    } catch ( error ) {
+      toast.error( error instanceof Error ? error.message : 'Something went wrong, please try again' )
+    } finally {
+      setLoading( false )
+    }
+  }
+
   return (
     <Modal
       isOpen={ isLoginOpen }
@@ -77,7 +114,7 @@ const LoginModal = () => {
       </div>
 
       {/* form */}
-      <form action="" className="space-y-8">
+      <form onSubmit={ onSubmit } className={ 'space-y-8' }>
         <Input 
           id={ 'login-email' }
           name={ 'email' }
@@ -121,6 +158,7 @@ const LoginModal = () => {
         icon={ <FcGoogle size={ 22 } />}
         disabled={ loading }
         fullWidth={ true }
+        onClick={ signInWithGoogle }
       >
         Continue with Google
       </Button>

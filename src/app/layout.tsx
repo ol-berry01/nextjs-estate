@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Toaster } from 'react-hot-toast'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 
@@ -36,6 +37,7 @@ const RootLayout = ( {
         <LoginModal />
         <CreatePropertyModal />
         <FilterModal />
+        <Toaster />
       </body>
     </html>
   )
