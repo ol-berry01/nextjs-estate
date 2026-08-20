@@ -3,12 +3,13 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
-import Input from '../ui/Input'
-import Button from '../ui/Button'
 
 import Modal from './Modal'
 import useAuthModal from '@/store/useAuthModalStore'
 import { authClient } from '@/lib/auth-client'
+import signInWithGoogle from '@/services/signInWithGoogle'
+import Input from '../ui/Input'
+import Button from '../ui/Button'
 
 import { FcGoogle } from 'react-icons/fc'
 
@@ -178,6 +179,7 @@ const RegisterModal = () => {
         icon={ <FcGoogle size={ 22 } />}
         disabled={ loading }
         fullWidth={ true }
+        onClick={ signInWithGoogle }
       >
         Continue with Google
       </Button>
