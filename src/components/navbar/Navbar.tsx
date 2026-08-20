@@ -141,19 +141,36 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             </div>
 
             <div className={ 'mt-4 flex flex-col gap-3' }>
-              <Button 
-                variant={ 'outline' } 
-                icon={ <FaHome /> }
-                onClick={ openCreateModal }
-              >
-                Add property
-              </Button>
-              <Button 
-                variant={ 'outline' }
-                onClick={ openLogin }
-              >
-                Login
-              </Button>
+              { 
+                ! isPending && session && (
+                  <Button 
+                    variant={ 'outline' } 
+                    icon={ <FaHome /> }
+                    onClick={ openCreateModal }
+                  >
+                    Add property
+                  </Button>
+                ) 
+              }
+              {
+                session ?
+                (
+                  <Button 
+                    variant={ 'outline' }
+                    onClick={ handleLogout }
+                  >
+                    Logout
+                  </Button>
+                ) :
+                (
+                  <Button 
+                    variant={ 'outline' }
+                    onClick={ openLogin }
+                  >
+                    Login
+                  </Button>
+                )
+              }
             </div>
           </div>
         ) }
