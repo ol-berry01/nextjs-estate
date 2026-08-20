@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import getCurrentUser from '@/server-actions/getCurrentUser'
 
 const ProtectedLayout = async ( {
@@ -5,7 +7,11 @@ const ProtectedLayout = async ( {
 }: Readonly<{
   children: React.ReactNode
 }> ) => {
-  await getCurrentUser()
+  const user = await getCurrentUser()
+
+  if ( ! user ) {
+    redirect( '/' )
+  }
   return (
     <>
       { children }
