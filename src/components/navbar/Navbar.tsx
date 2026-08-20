@@ -62,15 +62,30 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
 
           {/* desktop buttons */}
           <div className={ 'hidden lg:flex items-center gap-4' }>
+            {
+              session ?
+              (
+                <Button 
+                  variant={ 'outline' }
+                  onClick={ openLogin }
+                >
+                  Logout
+                </Button>
+              ) :
+              (
+                <Button 
+                  variant={ 'outline' }
+                  onClick={ openLogin }
+                >
+                  Login
+                </Button>
+              )
+            }
             <Button 
               variant={ 'outline' } 
               icon={ <FaHome /> }
               onClick={ openCreateModal }
             >Add property</Button>
-            <Button 
-              variant={ 'outline' }
-              onClick={ openLogin }
-            >Login</Button>
           </div>
 
           {/* mobile menu buttons */}
