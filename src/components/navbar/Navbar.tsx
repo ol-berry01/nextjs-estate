@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 import useAuthModal from '@/store/useAuthModalStore'
+import { authClient } from '@/lib/auth-client'
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
 
 import Button from '@/components/ui/Button'
@@ -23,6 +24,7 @@ const navLinks = [
 ]
 
 const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
+  const { data: session, isPending } = authClient.useSession()
   const [ isOpen, setIsOpen ] = useState( false )
   const { openLogin } = useAuthModal()
   const { open: openCreateModal } = useCreatePropertyModalStore()
