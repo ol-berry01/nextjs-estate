@@ -62,6 +62,15 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
 
           {/* desktop buttons */}
           <div className={ 'hidden lg:flex items-center gap-4' }>
+            { ! isPending && session && (
+              <Button 
+                variant={ 'outline' } 
+                icon={ <FaHome /> }
+                onClick={ openCreateModal }
+              >
+                Add property
+              </Button>
+            ) }
             {
               session ?
               (
@@ -81,11 +90,6 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
                 </Button>
               )
             }
-            <Button 
-              variant={ 'outline' } 
-              icon={ <FaHome /> }
-              onClick={ openCreateModal }
-            >Add property</Button>
           </div>
 
           {/* mobile menu buttons */}
