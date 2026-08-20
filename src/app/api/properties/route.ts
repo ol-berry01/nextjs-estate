@@ -31,6 +31,17 @@ const POST = async ( req: NextRequest ) => {
     const address = formData.get( 'address' ) as string
     const area = formData.get( 'area' ) as string
     const image = formData.get( 'image' ) as File
+
+    if ( ! title || ! description || ! price || ! propertyType || ! listingType || ! bedrooms || ! bathrooms || ! location || ! area || ! image ) {
+      return NextResponse.json(
+        {
+          error: 'All required fields must be provided'
+        },
+        {
+          status: 400
+        }
+      )
+    }
   } catch (error) {
     console.log( error )
 
