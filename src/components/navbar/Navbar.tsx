@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 import useAuthModal from '@/store/useAuthModalStore'
@@ -24,11 +25,17 @@ const navLinks = [
 ]
 
 const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
+  const router = useRouter()
   const { data: session, isPending } = authClient.useSession()
   const [ isOpen, setIsOpen ] = useState( false )
   const { openLogin } = useAuthModal()
   const { open: openCreateModal } = useCreatePropertyModalStore()
   const isTransparent = variant === 'transparent'
+
+  const handleLogout = async () => {
+    await authClient.signOut()
+    router.refresh()
+  }
 
   return (
     <header className={ `w-full top-0 left-0 z-50 ${ isTransparent ? 'absolute' : 'bg-card sticky border-b border-black/5' }` }>
@@ -76,7 +83,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
               (
                 <Button 
                   variant={ 'outline' }
-                  onClick={ openLogin }
+                  onClick={ handleLogout }
                 >
                   Logout
                 </Button>
