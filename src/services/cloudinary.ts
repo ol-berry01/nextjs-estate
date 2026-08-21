@@ -14,7 +14,8 @@ const uploadToCloudinary = async ( file: File ): Promise<CloudinaryUploadResult>
   try {
     
   } catch (error) {
-    
+    console.error( 'Cloudinary upload error:', error )
+    throw new Error( 'Failed to upload image' )
   }
 }
 
