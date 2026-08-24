@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 
+import axios from 'axios'
+import { toast } from 'react-hot-toast'
+
 import useCreatePropertyModalStore from '@/store/useCreatePropertyModalStore'
 import propertyTypes from '@/constants/PropertyTypes'
 
@@ -71,7 +74,18 @@ const CreatePropertyModal = () => {
     setPreview( URL.createObjectURL( file ) )
   }
 
-  const createListing = () => {}
+  const createListing = () => {
+    try {
+      
+    } catch (error) {
+      if ( axios.isAxiosError( error ) ) {
+        toast.error( error.response?.data.error || 'Something went wrong' )
+        return
+      }
+    } finally {
+      setLoading( false )
+    }
+  }
 
   return (
     <Modal
