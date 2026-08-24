@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
@@ -26,6 +27,7 @@ const STEPS = {
 }
 
 const CreatePropertyModal = () => {
+  const router = useRouter()
   const [ step, setStep ] = useState( STEPS.TYPE )
   const [ loading, setLoading ] = useState( false )
   const { isOpen, close } = useCreatePropertyModalStore()
@@ -104,6 +106,8 @@ const CreatePropertyModal = () => {
       } )
 
       toast.success( 'Property created' )
+      router.replace( '/properties' )
+      handleClose()
     } catch (error) {
       if ( axios.isAxiosError( error ) ) {
         toast.error( error.response?.data.error || 'Something went wrong' )
@@ -112,6 +116,24 @@ const CreatePropertyModal = () => {
     } finally {
       setLoading( false )
     }
+  }
+
+  const handleClose = () => {
+    setPropertyType( '' )
+    setTitle( '' )
+    setDescription( '' )
+    setPrice( '' )
+    setBedrooms( 1 )
+    setBathrooms( 1 )
+    setParkingSpaces( 0 )
+    setArea( '' )
+    setLocation( '' )
+    setAddress( '' )
+    setImage( null )
+    setPreview( null )
+    setStep( STEPS.TYPE )
+
+    close()
   }
 
   return (
