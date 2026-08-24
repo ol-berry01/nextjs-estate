@@ -74,9 +74,34 @@ const CreatePropertyModal = () => {
     setPreview( URL.createObjectURL( file ) )
   }
 
-  const createListing = () => {
+  const createListing = async () => {
     try {
-      
+      setLoading( true )
+
+      const formData = new FormData()
+
+      formData.append( 'title', title )
+      formData.append( 'description', description )
+      formData.append( 'price', price )
+      formData.append( 'location', location )
+      formData.append( 'address', address )
+      formData.append( 'area', area )
+      formData.append( 'propertyType', propertyType )
+      formData.append( 'listingType', listingType )
+      formData.append( 'bedrooms', bedrooms.toString() )
+      formData.append( 'bathrooms', bathrooms.toString() )
+      formData.append( 'parkingSpaces', parkingSpaces.toString() )
+      formData.append( 'price', price.toString() )
+
+      if ( image ) {
+        formData.append( 'image', image )
+      }
+
+      await axios.post( '/api/properties', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      } )
     } catch (error) {
       if ( axios.isAxiosError( error ) ) {
         toast.error( error.response?.data.error || 'Something went wrong' )
