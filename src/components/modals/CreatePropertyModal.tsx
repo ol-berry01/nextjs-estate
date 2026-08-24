@@ -102,6 +102,8 @@ const CreatePropertyModal = () => {
           'Content-Type': 'multipart/form-data'
         }
       } )
+
+      toast.success( 'Property created' )
     } catch (error) {
       if ( axios.isAxiosError( error ) ) {
         toast.error( error.response?.data.error || 'Something went wrong' )
