@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { prisma } from '@/database/db'
 
 import getCurrentUser from '@/server-actions/getCurrentUser'
+import uploadToCloudinary from '@/services/cloudinary'
+import { CloudinaryUploadResult } from '@/services/cloudinary'
 
 const POST = async ( req: NextRequest ) => {
   try {
@@ -32,7 +35,7 @@ const POST = async ( req: NextRequest ) => {
     const area = formData.get( 'area' ) as string
     const image = formData.get( 'image' ) as File
 
-    if ( ! title || ! description || ! price || ! propertyType || ! listingType || ! bedrooms || ! bathrooms || ! location || ! area || ! image ) {
+    if ( ! title || ! description || ! price || ! propertyType || ! listingType || ! bedrooms || ! bathrooms || ! location || ! image ) {
       return NextResponse.json(
         {
           error: 'All required fields must be provided'
@@ -42,6 +45,30 @@ const POST = async ( req: NextRequest ) => {
         }
       )
     }
+
+    // upload image to cloud using  cloudinary
+    const imageData: CloudinaryUploadResult = await uploadToCloudinary( image )
+
+    await prisma.property.create( {
+      data: {
+        title,
+        description,
+        propertyType,
+        listingType,
+        price:Number( price ),
+        bedrooms:Number( bedrooms ),
+        bathrooms:Number( bathrooms ),
+        parkingSpaces:Number( parkingSpaces ),
+        area:area ? Number( area ) : null,
+        location,
+        address,
+        image:imageData.secure_url,
+        ownerId:currentUser.id
+      }
+    } )
+
+    return NextResponse.json( { status: 201 } )
+
   } catch (error) {
     console.log( error )
 
