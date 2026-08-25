@@ -4,7 +4,7 @@ const CardSkeleton = () => {
       { Array.from( { length: 6 } ).map( ( _, index ) => (
         <div 
           key={ index }
-          className={ 'bg-black h-105 rounded-3xl animate-pulse' } 
+          className={ 'bg-black/5 h-105 rounded-3xl animate-pulse' } 
         />
       ) ) }
     </div>
