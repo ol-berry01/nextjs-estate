@@ -6,6 +6,7 @@ import { Navbar } from '@/components/navbar/Navbar'
 
 import PropertyCard from '@/components/ui/PropertyCard'
 import CardSkeleton from '@/components/ui/CardSkeleton'
+import PropertiesFallback from '@/components/ui/PropertiesFallback'
 
 const PropertiesPage = () => {
   return (
@@ -31,22 +32,18 @@ const PropertiesPage = () => {
   )
 }
 
-const PropertiesFallback = () => {
-  return (
-    <div className={ 'w-full h-[50vh] my-10 border border-black/5 rounded-xl flex justify-center items-center' }>
-      <p className={ 'text-text' }>No properties found</p>
-    </div>
-  )
-}
-
 const PropertiesContent = async () => {
   const properties = await getUserProperties()
 
   if ( properties.length === 0 ) {
     return (
-      <PropertiesFallback />
+      <PropertiesFallback
+        title={ 'No properties found' }
+        subTitle={ 'You don\'t have any properties listed, please create one and then return to this page' }
+      />
     )
   }
+
   return (
     <div className={ 'my-10 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
       { properties.map( ( property ) => (
