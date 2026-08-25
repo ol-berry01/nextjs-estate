@@ -2,7 +2,7 @@ import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
 import PropertyCard from '@/components/ui/PropertyCard'
-import Button from '@/components/ui/Button'
+import FilterButton from '@/components/ui/FilterButton'
 
 import properties from '@/constants/dummyProperties'
 
@@ -21,7 +21,7 @@ const MarketPlace = () => {
             Explore
           </h2>
 
-          <Button
+          {/* <Button
             variant={ 'outline' }
             icon={ 
               <HiOutlineAdjustmentsHorizontal 
@@ -30,7 +30,8 @@ const MarketPlace = () => {
             }
           >
             Filter
-          </Button>
+          </Button> */}
+          <FilterButton />
         </div>
 
         <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>

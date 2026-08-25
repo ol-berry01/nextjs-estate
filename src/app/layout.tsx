@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Toaster } from 'react-hot-toast'
 import { Poppins } from 'next/font/google'
 import './globals.css'
 
@@ -7,6 +8,11 @@ const poppins = Poppins( {
   subsets: [ 'latin' ],
   weight: [ '300', '400', '500', '600', '700', '800' ]
 } )
+
+import LoginModal from '@/components/modals/LoginModal'
+import RegisterModal from '@/components/modals/RegisterModal'
+import CreatePropertyModal from '@/components/modals/CreatePropertyModal'
+import FilterModal from '@/components/modals/FilterModal'
 
 export const metadata: Metadata = {
   title: 'Real estate marketplace',
@@ -23,7 +29,16 @@ const RootLayout = ( {
       lang={ 'en' }
       className={ `${ poppins.className } h-full antialiased` }
     >
-      <body className={ 'bg-background min-h-full flex flex-col' }>{ children }</body>
+      <body 
+        className={ 'bg-background min-h-full flex flex-col' }
+      >
+        { children }
+        <RegisterModal />
+        <LoginModal />
+        <CreatePropertyModal />
+        <FilterModal />
+        <Toaster />
+      </body>
     </html>
   )
 }
