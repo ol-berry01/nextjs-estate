@@ -233,6 +233,7 @@ const CreatePropertyModal = () => {
               onChange={ ( e: React.ChangeEvent<HTMLInputElement> ) => setTitle( e.target.value ) }
             />
             <Input 
+              as={ 'textarea' }
               name={ 'description' }
               label={ 'Property description' }
               value={ description }
