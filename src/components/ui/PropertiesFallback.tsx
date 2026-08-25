@@ -2,6 +2,8 @@
 
 import { useRouter } from 'next/navigation'
 
+import Button from './Button'
+
 import { HiOutlineHomeModern } from 'react-icons/hi2'
 
 interface PropertiesFallbackProps {
@@ -18,12 +20,25 @@ const PropertiesFallback = ( { title, subTitle, filter }: PropertiesFallbackProp
         size={ 40 }
         className={ 'text-primary' }
       />
-      <h2 className={ 'text-text mt-6 text-2xl font-bold' }>
+      <h2 className={ 'text-text mt-6 text-xl font-bold' }>
         { title }
       </h2>
-      <p className={ 'text-text' }>
-        No properties found
-      </p>
+      { subTitle && (
+        <p className={ 'text-text mt-3 leading-relaxed' }>
+          { subTitle }
+        </p>
+      ) }
+
+      { filter && (
+        <div className="mt-8">
+          <Button
+            variant={ 'outline' }
+            onClick={ () => router.replace( '/marketplace' ) }
+          >
+            Clear Filters
+          </Button>
+        </div>
+      ) }
     </div>
   )
 }
