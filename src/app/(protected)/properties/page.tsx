@@ -1,12 +1,9 @@
+import getUserProperties from '@/server-actions/getUserProperties'
+
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
 import PropertyCard from '@/components/ui/PropertyCard'
-import Button from '@/components/ui/Button'
-
-import properties from '@/constants/dummyProperties'
-
-import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 
 const PropertiesPage = () => {
   return (
@@ -22,16 +19,27 @@ const PropertiesPage = () => {
           </h2>
         </div>
 
-        <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
-          { properties.map( ( property ) => (
-            <PropertyCard 
-              key={ property.id }
-             property={ property }
-            />
-          ) )}
-        </div>
+        <PropertiesContent />  
       </div>
     </FrontendLayout>
+  )
+}
+
+const PropertiesContent = async () => {
+  const properties = await getUserProperties()
+
+  if ( properties.length === 0 ) {
+    return <p>No properties found</p>
+  }
+  return (
+    <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
+      { properties.map( ( property ) => (
+        <PropertyCard 
+          key={ property.id }
+          property={ property }
+        />
+      ) )}
+    </div>
   )
 }
 
