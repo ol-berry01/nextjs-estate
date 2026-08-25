@@ -5,7 +5,7 @@ import getCurrentUser from '@/server-actions/getCurrentUser'
 import uploadToCloudinary from '@/services/cloudinary'
 import { CloudinaryUploadResult } from '@/services/cloudinary'
 
-const POST = async ( req: NextRequest ) => {
+export async function POST( req: NextRequest ) {
   try {
     const currentUser = await getCurrentUser()
 
@@ -82,5 +82,3 @@ const POST = async ( req: NextRequest ) => {
     )
   }
 }
-
-export default POST
