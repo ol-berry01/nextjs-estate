@@ -18,6 +18,9 @@ const PropertiesFallback = ( { title, subTitle, filter }: PropertiesFallbackProp
         size={ 40 }
         className={ 'text-primary' }
       />
+      <h2 className={ 'text-text mt-6 text-2xl font-bold' }>
+        { title }
+      </h2>
       <p className={ 'text-text' }>
         No properties found
       </p>
