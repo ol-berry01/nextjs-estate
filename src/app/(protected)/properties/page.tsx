@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import getUserProperties from '@/server-actions/getUserProperties'
 
 import FrontendLayout from '@/components/layouts/FrontendLayout'
@@ -19,7 +20,11 @@ const PropertiesPage = () => {
           </h2>
         </div>
 
-        <PropertiesContent />  
+        <Suspense
+          fallback={ <p>Loading...</p> }
+        >
+          <PropertiesContent />  
+        </Suspense>
       </div>
     </FrontendLayout>
   )
