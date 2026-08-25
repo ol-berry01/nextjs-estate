@@ -30,14 +30,24 @@ const PropertiesPage = () => {
   )
 }
 
+const PropertiesFallback = () => {
+  return (
+    <div className={ 'w-full h-[50vh] my-10 border border-black/5 rounded-xl flex justify-center items-center' }>
+      <p className={ 'text-text' }>No properties found</p>
+    </div>
+  )
+}
+
 const PropertiesContent = async () => {
   const properties = await getUserProperties()
 
   if ( properties.length === 0 ) {
-    return <p>No properties found</p>
+    return (
+      <PropertiesFallback />
+    )
   }
   return (
-    <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
+    <div className={ 'my-10 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
       { properties.map( ( property ) => (
         <PropertyCard 
           key={ property.id }
