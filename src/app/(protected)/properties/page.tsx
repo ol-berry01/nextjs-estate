@@ -5,6 +5,7 @@ import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
 import PropertyCard from '@/components/ui/PropertyCard'
+import CardSkeleton from '@/components/ui/CardSkeleton'
 
 const PropertiesPage = () => {
   return (
@@ -21,7 +22,7 @@ const PropertiesPage = () => {
         </div>
 
         <Suspense
-          fallback={ <p>Loading...</p> }
+          fallback={ <CardSkeleton /> }
         >
           <PropertiesContent />  
         </Suspense>
