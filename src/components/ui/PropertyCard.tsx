@@ -26,7 +26,7 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
         <div className={ 'bg-linear-to-t from-black/90 via-black/20 to-transparent absolute inset-0' }>
           {/* top badge */}
           <div className={ 'bg-white/80 text-primary px-4 py-2 rounded-full text-sm font-semibold absolute top-5 left-5 z-20' }>
-            { property.status === 'rent' ? 'To let' : 'For sale' }
+            { property.listingType === 'rent' ? 'To let' : 'For sale' }
           </div>
 
           {/* content card */}
@@ -34,7 +34,7 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
             <div className={ 'flex justify-between items-start gap-4' }>
               <div className={ '' }>
                 { 
-                  property.status === 'rent' ? 
+                  property.listingType === 'rent' ? 
                   (
                     <h3 className={ 'text-white text-3xl flex items-center' }>
                       £{ property.price.toLocaleString() }
@@ -55,8 +55,8 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
                 </p>
               </div>
 
-              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium' }>
-                { property.type }
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium capitalize' }>
+                { property.propertyType }
               </div>
             </div>
 
