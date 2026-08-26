@@ -147,6 +147,8 @@ export async function GET( req: NextRequest ) {
         createdAt: 'desc'
       }
     } )
+
+    return NextResponse.json( properties )
   } catch (error) {
     console.log( error )
 
