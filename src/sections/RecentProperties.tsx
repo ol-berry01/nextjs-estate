@@ -3,8 +3,6 @@ import getRecentProperties from '@/server-actions/getRecentProperties'
 import PropertyCard from '@/components/ui/PropertyCard'
 
 const RecentProperties = async () => {
-  const properties = await getRecentProperties()
-
   return (
     <section className={ 'py-24' }>
       <div className={ 'max-w-7xl mx-auto px-6 lg:px-12' }>
@@ -24,16 +22,24 @@ const RecentProperties = async () => {
         </div>
 
         {/* properties grid */}
-        <div className={ 'my-6 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
-          { properties.map( ( property ) => (
-            <PropertyCard 
-              key={ property.id }
-              property={ property }
-            />
-          ) ) }
-        </div>
+        
       </div>
     </section>
+  )
+}
+
+const RecentPropertiesItems = async () => {
+  const properties = await getRecentProperties()
+  
+  return (
+    <div className={ 'my-6 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
+      { properties.map( ( property ) => (
+        <PropertyCard 
+          key={ property.id }
+          property={ property }
+        />
+      ) ) }
+    </div>
   )
 }
 
