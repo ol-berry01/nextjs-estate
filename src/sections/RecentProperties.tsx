@@ -1,5 +1,8 @@
+import { Suspense } from 'react'
+
 import getRecentProperties from '@/server-actions/getRecentProperties'
 
+import CardSkeleton from '@/components/ui/CardSkeleton'
 import PropertyCard from '@/components/ui/PropertyCard'
 
 const RecentProperties = async () => {
@@ -22,6 +25,11 @@ const RecentProperties = async () => {
         </div>
 
         {/* properties grid */}
+        <Suspense
+          fallback={ <CardSkeleton /> }
+        >
+          <RecentPropertiesItems />
+        </Suspense>
         
       </div>
     </section>
