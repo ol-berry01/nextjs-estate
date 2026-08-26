@@ -1,8 +1,10 @@
+import getRecentProperties from '@/server-actions/getRecentProperties'
+
 import PropertyCard from '@/components/ui/PropertyCard'
 
-import properties from '@/constants/dummyProperties'
+const RecentProperties = async () => {
+  const properties = await getRecentProperties()
 
-const RecentProperties = () => {
   return (
     <section className={ 'py-24' }>
       <div className={ 'max-w-7xl mx-auto px-6 lg:px-12' }>
