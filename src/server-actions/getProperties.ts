@@ -11,7 +11,7 @@ const getProperties = async ( params?: GetPropertiesParams ) => {
   try {
 
   } catch (error) {
-    console.log(error)
+    throw new Error( 'Failed to fetch properties', { cause: error } )
   }
 }
 
