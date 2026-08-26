@@ -82,3 +82,20 @@ export async function POST( req: NextRequest ) {
     )
   }
 }
+
+export async function GET() {
+  try {
+    
+  } catch (error) {
+    console.log( error )
+
+    return NextResponse.json(
+      {
+        error: 'Something went wrong'
+      },
+      {
+        status: 500
+      }
+    )
+  }
+}
