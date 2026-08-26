@@ -83,9 +83,17 @@ export async function POST( req: NextRequest ) {
   }
 }
 
-export async function GET() {
+export async function GET( req: NextRequest ) {
   try {
-    
+    const searchParams = req.nextUrl.searchParams
+
+    const search = searchParams.get( 'search' )
+    const propertyType = searchParams.get( 'propertyType' )
+    const location = searchParams.get( 'location' )
+    const minPrice = searchParams.get( 'minPrice' )
+    const maxPrice = searchParams.get( 'maxPrice' )
+
+    const properties = await prisma.property.findMany( {} )
   } catch (error) {
     console.log( error )
 
