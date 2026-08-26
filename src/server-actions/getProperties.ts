@@ -1,4 +1,13 @@
-const getProperties = async () => {
+interface GetPropertiesParams {
+  search?: string,
+  propertyType?: string,
+  location?: string,
+  address?: string,
+  minPrice?: number,
+  maxPrice?: number
+}
+
+const getProperties = async ( params?: GetPropertiesParams ) => {
   try {
 
   } catch (error) {
@@ -6,4 +15,5 @@ const getProperties = async () => {
   }
 }
 
-export default getProperties
+export { getProperties }
+export type { GetPropertiesParams }
