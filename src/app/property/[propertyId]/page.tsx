@@ -1,5 +1,7 @@
 import { Suspense } from 'react'
 
+import getProperty from '@/server-actions/getProperty'
+
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 import { Navbar } from '@/components/navbar/Navbar'
@@ -11,7 +13,9 @@ import { FaMapMarkerAlt, FaRulerCombined } from 'react-icons/fa'
 import { LuBedDouble, LuBath } from 'react-icons/lu'
 
 
-const SingleProperty = () => {
+const SingleProperty = async ( { params }: { params: Promise<{ propertyId: string }>} ) => {
+  const propertyId = ( await params ).propertyId
+
   return (
     <FrontendLayout>
       <Navbar
