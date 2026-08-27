@@ -114,7 +114,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
 
         <div className={ 'w-full h-60 my-6 relative md:h-100 lg:h-120' }>
           <Image 
-            src={ { property.image } || '/images/image1.jpg' }
+            src={ property?.image || '' }
             alt={ 'property' }
             fill
             className={ 'w-full object-cover rounded-2xl shadow-sm' }
