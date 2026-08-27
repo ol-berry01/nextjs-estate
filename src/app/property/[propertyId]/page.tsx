@@ -32,6 +32,8 @@ const SingleProperty = async ( { params }: { params: Promise<{ propertyId: strin
 }
 
 const PropertyContent = async () => {
+  const property = await getProperty()
+
   return (
     <section className={ 'py-15' }>
       <div className={ 'max-w-7xl mx-auto px-6 lg:px-12' }>
