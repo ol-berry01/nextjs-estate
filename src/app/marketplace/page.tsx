@@ -1,8 +1,11 @@
+import { Suspense } from 'react'
+
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
 import MarketplaceItems from '@/components/marketplace/MarketplaceItems'
 import FilterButton from '@/components/ui/FilterButton'
+import CardSkeleton from '@/components/ui/CardSkeleton'
 
 type MarketPlaceProps = {
   searchParams: Promise<{
@@ -33,9 +36,13 @@ const MarketPlace = async ( { searchParams }: MarketPlaceProps ) => {
           <FilterButton />
         </div>
 
-        <MarketplaceItems 
-          searchParams={ params }
-        />
+        <Suspense
+          fallback={ <CardSkeleton/> }
+        >
+          <MarketplaceItems 
+            searchParams={ params }
+          />
+        </Suspense>
       </div>
     </FrontendLayout>
   )
