@@ -1,10 +1,23 @@
+'use client'
+
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
 import MarketplaceItems from '@/components/marketplace/MarketplaceItems'
 import FilterButton from '@/components/ui/FilterButton'
 
-const MarketPlace = () => {
+type MarketPlaceProps = {
+  searchParams: Promise<{
+    search?: string,
+    propertyType?: string,
+    location?: string,
+    address?: string,
+    minPrice?: number,
+    maxPrice?: number
+  }>
+}
+
+const MarketPlace = async ( { searchParams }: MarketPlaceProps ) => {
   return (
     <FrontendLayout>
       <Navbar 
