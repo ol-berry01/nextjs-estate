@@ -25,14 +25,16 @@ const SingleProperty = async ( { params }: { params: Promise<{ propertyId: strin
       <Suspense
         fallback={ <p>Loading...</p> }
       >
-        <PropertyContent />
+        <PropertyContent 
+          propertyId={ propertyId }
+        />
       </Suspense>
     </FrontendLayout>
   )
 }
 
-const PropertyContent = async () => {
-  const property = await getProperty()
+const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
+  const property = await getProperty( propertyId )
 
   return (
     <section className={ 'py-15' }>
