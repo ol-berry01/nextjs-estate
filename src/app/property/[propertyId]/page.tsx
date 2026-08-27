@@ -5,6 +5,7 @@ import getProperty from '@/server-actions/getProperty'
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 
 import { Navbar } from '@/components/navbar/Navbar'
+import PropertySkeleton from '@/components/ui/PropertySkeleton'
 import EmailForm from '@/components/ui/EmailForm'
 
 import Image from 'next/image'
@@ -23,7 +24,7 @@ const SingleProperty = async ( { params }: { params: Promise<{ propertyId: strin
       />
 
       <Suspense
-        fallback={ <p>Loading...</p> }
+        fallback={ <PropertySkeleton/> }
       >
         <PropertyContent 
           propertyId={ propertyId }
