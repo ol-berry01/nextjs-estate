@@ -1,12 +1,8 @@
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
-import PropertyCard from '@/components/ui/PropertyCard'
+import MarketplaceItems from '@/components/marketplace/MarketplaceItems'
 import FilterButton from '@/components/ui/FilterButton'
-
-import properties from '@/constants/dummyProperties'
-
-import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
 
 const MarketPlace = () => {
   return (
@@ -21,27 +17,10 @@ const MarketPlace = () => {
             Explore
           </h2>
 
-          {/* <Button
-            variant={ 'outline' }
-            icon={ 
-              <HiOutlineAdjustmentsHorizontal 
-                size={ 20 } 
-              /> 
-            }
-          >
-            Filter
-          </Button> */}
           <FilterButton />
         </div>
 
-        <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
-          { properties.map( ( property ) => (
-            <PropertyCard 
-              key={ property.id }
-             property={ property }
-            />
-          ) )}
-        </div>
+        <MarketplaceItems />
       </div>
     </FrontendLayout>
   )
