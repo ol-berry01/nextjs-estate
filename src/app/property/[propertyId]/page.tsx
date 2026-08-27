@@ -44,7 +44,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
           {/* property overview */}
           <div>
             <p className={ 'text-primary text-sm font-semibold uppercase tracking-[0.25em]' }>
-              For sale
+              { property?.listingType === 'sale' ? 'For sale' : 'To rent' }
             </p>
 
             <h2 className={ 'text-text mt-3 text-4xl font-bold md:text-5xl' }>
