@@ -18,6 +18,8 @@ type MarketPlaceProps = {
 }
 
 const MarketPlace = async ( { searchParams }: MarketPlaceProps ) => {
+  const params = await searchParams
+
   return (
     <FrontendLayout>
       <Navbar 
@@ -33,7 +35,9 @@ const MarketPlace = async ( { searchParams }: MarketPlaceProps ) => {
           <FilterButton />
         </div>
 
-        <MarketplaceItems />
+        <MarketplaceItems 
+          searchParams={ params }
+        />
       </div>
     </FrontendLayout>
   )
