@@ -33,6 +33,10 @@ const SingleProperty = async ( { params }: { params: Promise<{ propertyId: strin
   )
 }
 
+const formatPrice = ( price: number | string ) => {
+  return Number( price).toLocaleString( 'en-GB' )
+}
+
 const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
   const property = await getProperty( propertyId )
 
@@ -103,7 +107,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
             </p>
 
             <h2 className={ 'text-primary mt-2 text-4xl font-bold' }>
-              &pound;{ property?.price }
+              &pound;{ formatPrice( property?.price || '' ) }
             </h2>
           </div>
         </div>
