@@ -4,8 +4,9 @@ import { getProperties } from '@/server-actions/getProperties'
 import Property from '@/types/property'
 
 import PropertyCard from '@/components/ui/PropertyCard'
+import PropertiesFallback from '@/components/ui/PropertiesFallback'
 
-type MarketplaceItemsProps = {
+interface MarketplaceItemsProps {
   searchParams: {
     search?: string,
     propertyType?: string,
@@ -26,6 +27,16 @@ const MarketplaceItems = async ( { searchParams }: MarketplaceItemsProps ) => {
     maxPrice: searchParams.maxPrice
     
   })
+
+  if ( properties.length === 0 ) {
+    return (
+      <PropertiesFallback 
+        title={ 'No matching properties' }
+        subTitle={ 'Please adjust your search criteria or clear some filters to see more results' }
+        filter={ true }
+      />
+    )
+  }
   return (
     <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
       { properties.map( ( property ) => (

@@ -1,5 +1,3 @@
-'use client'
-
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
