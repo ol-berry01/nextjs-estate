@@ -1,5 +1,3 @@
-'use client'
-
 import { getProperties } from '@/server-actions/getProperties'
 import Property from '@/types/property'
 
