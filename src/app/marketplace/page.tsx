@@ -1,14 +1,26 @@
+import { Suspense } from 'react'
+
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
-import PropertyCard from '@/components/ui/PropertyCard'
-import Button from '@/components/ui/Button'
+import MarketplaceItems from '@/components/marketplace/MarketplaceItems'
+import FilterButton from '@/components/ui/FilterButton'
+import CardSkeleton from '@/components/ui/CardSkeleton'
 
-import properties from '@/constants/dummyProperties'
+type MarketPlaceProps = {
+  searchParams: Promise<{
+    search?: string,
+    propertyType?: string,
+    location?: string,
+    address?: string,
+    minPrice?: number,
+    maxPrice?: number
+  }>
+}
 
-import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+const MarketPlace = async ( { searchParams }: MarketPlaceProps ) => {
+  const params = await searchParams
 
-const MarketPlace = () => {
   return (
     <FrontendLayout>
       <Navbar 
@@ -21,26 +33,16 @@ const MarketPlace = () => {
             Explore
           </h2>
 
-          <Button
-            variant={ 'outline' }
-            icon={ 
-              <HiOutlineAdjustmentsHorizontal 
-                size={ 20 } 
-              /> 
-            }
-          >
-            Filter
-          </Button>
+          <FilterButton />
         </div>
 
-        <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
-          { properties.map( ( property ) => (
-            <PropertyCard 
-              key={ property.id }
-             property={ property }
-            />
-          ) )}
-        </div>
+        <Suspense
+          fallback={ <CardSkeleton/> }
+        >
+          <MarketplaceItems 
+            searchParams={ params }
+          />
+        </Suspense>
       </div>
     </FrontendLayout>
   )

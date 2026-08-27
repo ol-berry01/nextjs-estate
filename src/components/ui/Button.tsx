@@ -5,8 +5,8 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'primary' | 'outline',
   icon?: ReactNode,
   iconPosition?: 'left' | 'right',
-  fullWidth?: boolean,
-  loading?: false
+fullWidth?: boolean,
+  loading?: boolean
 }
 
 const Button = ( {  
@@ -28,9 +28,9 @@ const Button = ( {
         font-semibold cursor-pointer transition-all duration-300
         inline-flex items-center justify-center gap-2
       `,
-      { 
+{
         'bg-primary hover:bg-primary/90 text-white': variant === 'primary',
-        'bg-card text-text border border-black/10 hover:text-primary hover:border-primary': variant = 'outline',
+        'bg-card text-text border border-black/10 hover:text-primary hover:border-primary': variant === 'outline',
         'w-full': fullWidth,
         'opacity-70 cursor-not-allowed': loading || disabled
       },

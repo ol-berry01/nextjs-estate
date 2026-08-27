@@ -26,7 +26,7 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
         <div className={ 'bg-linear-to-t from-black/90 via-black/20 to-transparent absolute inset-0' }>
           {/* top badge */}
           <div className={ 'bg-white/80 text-primary px-4 py-2 rounded-full text-sm font-semibold absolute top-5 left-5 z-20' }>
-            { property.status === 'rent' ? 'To let' : 'For sale' }
+            { property.listingType === 'rent' ? 'To let' : 'For sale' }
           </div>
 
           {/* content card */}
@@ -34,7 +34,7 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
             <div className={ 'flex justify-between items-start gap-4' }>
               <div className={ '' }>
                 { 
-                  property.status === 'rent' ? 
+                  property.listingType === 'rent' ? 
                   (
                     <h3 className={ 'text-white text-3xl flex items-center' }>
                       £{ property.price.toLocaleString() }
@@ -55,26 +55,26 @@ const PropertyCard = ( { property }:PropertyCardProps ) => {
                 </p>
               </div>
 
-              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium' }>
-                { property.type }
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium capitalize' }>
+                { property.propertyType }
               </div>
             </div>
 
-            <h2 className="text-white mt-5 text-xl font-bold">
+            <h2 className={ 'text-white mt-5 text-xl font-bold' }>
               { property.title }
             </h2>
 
             {/* listing features */}
-            <div className="mt-5 pt-5 border-t border-white/10 flex flex-wrap gap-3">
-                <div className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-                  { property.bedrooms } Beds
-                </div>
-                <div className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-                  { property.bathrooms } Bath
-                </div>
-                <div className="bg-white/10 text-white px-4 py-2 rounded-full text-sm">
-                  { property.area }m<sup>3</sup>
-                </div>
+            <div className={ 'mt-5 pt-5 border-t border-white/10 flex flex-wrap gap-3' }>
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm' }>
+                { property.bedrooms } Beds
+              </div>
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm' }>
+                { property.bathrooms } Bath
+              </div>
+              <div className={ 'bg-white/10 text-white px-4 py-2 rounded-full text-sm' }>
+                { property.area }m<sup>3</sup>
+              </div>
             </div>
           </div>
         </div>

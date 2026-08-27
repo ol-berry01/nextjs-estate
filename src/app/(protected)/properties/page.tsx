@@ -1,12 +1,12 @@
+import { Suspense } from 'react'
+import getUserProperties from '@/server-actions/getUserProperties'
+
 import FrontendLayout from '@/components/layouts/FrontendLayout'
 import { Navbar } from '@/components/navbar/Navbar'
 
 import PropertyCard from '@/components/ui/PropertyCard'
-import Button from '@/components/ui/Button'
-
-import properties from '@/constants/dummyProperties'
-
-import { HiOutlineAdjustmentsHorizontal } from "react-icons/hi2";
+import CardSkeleton from '@/components/ui/CardSkeleton'
+import PropertiesFallback from '@/components/ui/PropertiesFallback'
 
 const PropertiesPage = () => {
   return (
@@ -22,16 +22,37 @@ const PropertiesPage = () => {
           </h2>
         </div>
 
-        <div className={ 'my-4 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
-          { properties.map( ( property ) => (
-            <PropertyCard 
-              key={ property.id }
-             property={ property }
-            />
-          ) )}
-        </div>
+        <Suspense
+          fallback={ <CardSkeleton /> }
+        >
+          <PropertiesContent />  
+        </Suspense>
       </div>
     </FrontendLayout>
+  )
+}
+
+const PropertiesContent = async () => {
+  const properties = await getUserProperties()
+
+  if ( properties.length === 0 ) {
+    return (
+      <PropertiesFallback
+        title={ 'No properties found' }
+        subTitle={ 'You don\'t have any properties listed, please create one and then return to this page' }
+      />
+    )
+  }
+
+  return (
+    <div className={ 'my-10 grid md:grid-cols-2 xl:grid-cols-3 gap-8' }>
+      { properties.map( ( property ) => (
+        <PropertyCard 
+          key={ property.id }
+          property={ property }
+        />
+      ) )}
+    </div>
   )
 }
 
