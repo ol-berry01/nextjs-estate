@@ -48,7 +48,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
             </p>
 
             <h2 className={ 'text-text mt-3 text-4xl font-bold md:text-5xl' }>
-              Modern luxury apartment
+              { property?.title }
             </h2>
 
             {/* features */}
@@ -59,7 +59,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
                   className={ 'text-neutral-400' }
                 />
                 <span className={ 'text-neutral-800 font-medium' }>
-                  Manhattan, New York
+                  { property?.location }
                 </span>
               </div>
               
@@ -69,7 +69,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
                   className={ 'text-neutral-400' }
                 />
                 <span className={ 'text-neutral-800 font-medium' }>
-                  2200m<sup>3</sup>
+                  { property?.area }m<sup>3</sup>
                 </span>
               </div>
               
@@ -79,7 +79,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
                   className={ 'text-neutral-400' }
                 />
                 <span className={ 'text-neutral-800 font-medium' }>
-                  7 rooms
+                  { property?.bedrooms } rooms
                 </span>
               </div>
               
@@ -89,7 +89,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
                   className={ 'text-neutral-400' }
                 />
                 <span className={ 'text-neutral-800 font-medium' }>
-                  2 baths
+                  { property?.bathrooms } baths
                 </span>
               </div>
             </div>
@@ -103,14 +103,14 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
             </p>
 
             <h2 className={ 'text-primary mt-2 text-4xl font-bold' }>
-              &pound;2,500,000
+              &pound;{ property?.price }
             </h2>
           </div>
         </div>
 
         <div className={ 'w-full h-60 my-6 relative md:h-100 lg:h-120' }>
           <Image 
-            src={ '/images/image1.jpg' }
+            src={ { property.image } || '/images/image1.jpg' }
             alt={ 'property' }
             fill
             className={ 'w-full object-cover rounded-2xl shadow-sm' }
@@ -126,7 +126,7 @@ const PropertyContent = async ( { propertyId }: { propertyId: string } ) => {
               </h2>
 
               <p className={ 'text-text/70 mt-6 leading-relaxed' }>
-                Experience luxury living in this modern apartment located in one of the most desirable neighbourhoods in the city. Feating spacious interiors, premium finishes, floor-to-ceiling windows and world class amenities.
+                { property?.description }
               </p>
             </div>
           </div>
