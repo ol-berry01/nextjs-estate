@@ -58,7 +58,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
           <div className={ 'hidden lg:flex items-cetner gap-8' }>
             { navLinks.map( ( item ) => (
               <Link
-                href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
+                href={ item === 'Home' ? '/' : `/${ item.toLowerCase() }` }
                 className={ `text-sm hover:text-primary font-medium transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
                 key={ item }
               >
@@ -131,7 +131,7 @@ const Navbar = ( { variant = 'transparent' }:NavbarProps ) => {
             <div className={ 'flex flex-col gap-5' }>
               { navLinks.map( ( item ) => (
                 <Link
-                  href={ item === 'Home' ? '/' : `${ item.toLowerCase() }` }
+                  href={ item === 'Home' ? '/' : `/${ item.toLowerCase() }` }
                   className={ `transition ${ isTransparent ? 'text-white/80' : 'text-text/70' }` }
                   key={ item }
                 >
